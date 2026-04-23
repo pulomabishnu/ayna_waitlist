@@ -160,27 +160,25 @@
   <div class="success-screen" id="success-view"><div class="success-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div><div class="success-title">You're on the list.</div><p class="success-body">We'll be in touch. Ayna is being built for people exactly like you.</p></div>
 </div>
 <script>
-const SCRIPT_URL='YOUR_APPS_SCRIPT_URL_HERE';
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwtrQTfrmdbO_tEhebXoMXFr48yvcq7uTcloW7jMJ9VtRnFKpb5-gI0VlRFoOlJiQGzIA/exec';
 const form=document.getElementById('waitlist-form'),formView=document.getElementById('form-view'),successView=document.getElementById('success-view'),submitBtn=document.getElementById('submit-btn');
 const words=[
+  'cycle tracking app',
+  'menstrual cup',
   'health wearable',
-  'hot flash solution',
-  'supplement',
-  'PCOS specialist',
+  'period pad',
+  'OBGYN',
+  'probiotic',
+  'fertility tracker',
   'tampon',
   'postpartum kit',
-  'OBGYN',
-  'endometriosis care',
-  'fertility tracker',
-  'thyroid specialist',
-  'pelvic floor PT',
-  'lactation support',
-  'prenatal vitamin',
-  'probiotic',
-  'menstrual cup',
-  'period pad',
+  'telehealth app',
   'birth control',
-  'mental health care'
+  'hot flash patch',
+  'pelvic floor trainer',
+  'prenatal vitamin',
+  'endometriosis specialist',
+  'mental health app'
 ];
 let wordIndex=0;
 const rotatingWordEl=document.getElementById('rotating-word');
