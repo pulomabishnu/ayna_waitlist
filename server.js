@@ -7,6 +7,7 @@ const ROOT = __dirname;
 const MAX_BODY_BYTES = 1024 * 1024;
 const WEBHOOK_TIMEOUT_MS = 10000;
 const SHEETS_WEBHOOK_URL = process.env.GOOGLE_SCRIPT_URL || process.env.SHEETS_WEBHOOK_URL || "";
+const HERO_IMAGE_PATH = process.env.HERO_IMAGE_PATH || "C:\\Users\\pulom\\.cursor\\projects\\c-Users-pulom-ayna-waitlist\\assets\\c__Users_pulom_AppData_Roaming_Cursor_User_workspaceStorage_41615ed712d4becfbf8c0419b49baaf2_images_image-647bda4a-5c10-4887-a716-f2183ca9053b.png";
 
 function sendJson(res, statusCode, payload) {
   const body = JSON.stringify(payload);
@@ -158,6 +159,10 @@ const server = http.createServer(async (req, res) => {
 
     if (req.method === "GET" && reqPath === "/") {
       return sendFile(res, 200, path.join(ROOT, "index.html"), "text/html; charset=utf-8");
+    }
+
+    if (req.method === "GET" && reqPath === "/hero-bg") {
+      return sendFile(res, 200, HERO_IMAGE_PATH, "image/png");
     }
 
     if (req.method === "POST" && reqPath === "/api/waitlist") {
