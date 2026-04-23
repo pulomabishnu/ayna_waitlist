@@ -31,7 +31,7 @@
     }
     #rotating-word {
       display: inline-block;
-      min-width: 7ch;
+      min-width: 18ch;
       text-align: left;
       animation: wordFadeIn 0.4s ease both;
     }
@@ -159,7 +159,18 @@
 <script>
 const SCRIPT_URL='YOUR_APPS_SCRIPT_URL_HERE';
 const form=document.getElementById('waitlist-form'),formView=document.getElementById('form-view'),successView=document.getElementById('success-view'),submitBtn=document.getElementById('submit-btn');
-const words=['tampon','wearable','doctor','supplement'];
+const words=[
+  'wearable',
+  'hot flash solution',
+  'supplement',
+  'PCOS specialist',
+  'tampon',
+  'postpartum kit',
+  'doctor',
+  'endometriosis care',
+  'fertility tracker',
+  'thyroid specialist'
+];
 let wordIndex=0;
 const rotatingWordEl=document.getElementById('rotating-word');
 if(rotatingWordEl){
