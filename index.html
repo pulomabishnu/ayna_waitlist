@@ -19,8 +19,9 @@
 
     .wordmark{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.6rem;letter-spacing:0.45em;color:#fff;text-transform:uppercase;margin-bottom:0.3rem;animation:fadeUp 0.7s ease both;text-shadow:0 2px 12px rgba(0,0,0,0.4);text-align:center;width:100%}
     .sub-wordmark{font-size:0.63rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.75);font-weight:400;margin-bottom:3rem;animation:fadeUp 0.7s 0.08s ease both}
-    .headline{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:3rem;line-height:1.15;text-align:center;color:#fff;margin-bottom:1rem;animation:fadeUp 0.7s 0.15s ease both;max-width:480px;text-shadow:0 2px 16px rgba(0,0,0,0.4)}
+    .headline{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:3rem;line-height:1.15;text-align:center;color:#fff;margin-bottom:1rem;animation:fadeUp 0.7s 0.15s ease both;max-width:640px;text-shadow:0 2px 16px rgba(0,0,0,0.4)}
     .headline em{font-style:italic;color:#c8841a}
+    .headline-line-2{display:inline-block;white-space:nowrap}
     @keyframes wordFadeIn {
       0%   { opacity: 0; transform: translateY(6px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -31,7 +32,7 @@
     }
     #rotating-word {
       display: inline-block;
-      min-width: 18ch;
+      width: 18ch;
       text-align: left;
       animation: wordFadeIn 0.4s ease both;
     }
@@ -94,7 +95,7 @@
     <div class="sub-wordmark" style="text-align:center;">Women's health, personalized</div>
   </div>
   <div id="form-view" style="width:100%;max-width:500px;display:flex;flex-direction:column;align-items:center;">
-    <h1 class="headline">The health assistant built<br/>to find the best <em id="rotating-word">tampon</em> for your body.</h1>
+    <h1 class="headline">The health assistant built<br/><span class="headline-line-2">to find the best <em id="rotating-word">tampon</em> for your body.</span></h1>
     <p class="subheadline">Ayna finds the health products made for your body and the doctors who actually listen — so you can stop spending money and time, and start feeling better.</p>
     <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:2rem;animation:fadeUp 0.7s 0.28s ease both;">
       <span style="font-size:0.68rem;font-weight:400;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:0.35rem 0.9rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);white-space:nowrap;">Hormones &amp; cycles</span>
