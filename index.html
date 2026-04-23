@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayna - Waitlist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #9d4f55;
+      --bg-2: #ca6f66;
+      --glass: rgba(255, 255, 255, 0.15);
+      --glass-border: rgba(255, 255, 255, 0.32);
+      --text: #fff;
+      --muted: rgba(255, 255, 255, 0.78);
+      --chip: rgba(255, 255, 255, 0.1);
+      --chip-active: rgba(255, 255, 255, 0.24);
+      --danger: #ffe7c4;
+      --btn: rgba(10, 6, 5, 0.7);
+      --btn-hover: rgba(255, 255, 255, 0.95);
+    }
+    body {
+      min-height: 100vh;
+      font-family: "Jost", sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 22% 20%, #ffc2b5 0%, transparent 30%),
+                  radial-gradient(circle at 80% 80%, #b43f5c 0%, transparent 35%),
+                  linear-gradient(145deg, var(--bg), var(--bg-2));
+      overflow-x: hidden;
+    }
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 56px 20px;
+    }
+    .brand {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .brand h1 {
+      font-family: "Cormorant Garamond", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.42em;
+      padding-left: 0.42em;
+      font-size: 44px;
+      font-weight: 300;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
+    }
+    .brand p {
+      margin-top: 4px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .heading {
+      max-width: 700px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .heading h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 1.05;
+      margin-bottom: 12px;
+      text-shadow: 0 3px 20px rgba(0, 0, 0, 0.25);
+    }
+    .heading em { color: #ffd08b; }
+    .heading p {
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .card {
+      width: 100%;
+      max-width: 760px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+      padding: 28px;
+    }
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .field {
+      margin-bottom: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    label {
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--text);
+      padding: 12px 13px;
+      font-family: inherit;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(255, 255, 255, 0.72); }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.2);
+    }
+    select option { color: #2f1010; }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+    }
+    .chip {
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: var(--chip);
+      color: rgba(255, 255, 255, 0.92);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s ease;
+    }
+    .chip.active { background: var(--chip-active); }
+    .error {
+      display: none;
+      font-size: 12px;
+      color: var(--danger);
+    }
+    .field.has-error .error { display: block; }
+    .field.has-error input,
+    .field.has-error select,
+    .field.has-error textarea {
+      border-color: rgba(255, 231, 196, 0.9);
+    }
+    .btn {
+      margin-top: 6px;
+      border: 0;
+      width: 100%;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      background: var(--btn);
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      background: var(--btn-hover);
+      color: #271312;
+    }
+    .btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .footnote {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.68);
+    }
+    .status {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+      min-height: 18px;
+      color: #fff;
+    }
+    .status.error-state { color: var(--danger); }
+    .success-view {
+      display: none;
+      max-width: 580px;
+      text-align: center;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 22px;
+      padding: 44px 32px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .success-view h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .success-view p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    @media (max-width: 760px) {
+      .field-row { grid-template-columns: 1fr; }
+      .heading h2 { font-size: 39px; }
+      .card { padding: 20px; }
+      .brand h1 { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div id="form-view" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+      <section class="brand">
+        <h1>Ayna</h1>
+        <p>Women's health, personalized</p>
+      </section>
+
+      <section class="heading">
+        <h2>The health assistant built <em>for your body.</em></h2>
+        <p>
+          Ayna finds health products made for your body and doctors who actually listen -
+          so you can stop wasting time and money, and start feeling better.
+        </p>
+      </section>
+
+      <section class="card">
+        <form id="waitlist-form" novalidate>
+          <div class="field-row">
+            <div class="field" id="field-firstName">
+              <label for="firstName">First name</label>
+              <input id="firstName" name="firstName" placeholder="Maya" autocomplete="given-name" />
+              <span class="error">Required</span>
+            </div>
+            <div class="field" id="field-lastName">
+              <label for="lastName">Last name</label>
+              <input id="lastName" name="lastName" placeholder="Chen" autocomplete="family-name" />
+              <span class="error">Required</span>
+            </div>
+          </div>
+
+          <div class="field" id="field-email">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
+            <span class="error">Please enter a valid email</span>
+          </div>
+
+          <div class="field" id="field-concerns">
+            <label>What brings you here? (select all that apply)</label>
+            <div class="chips" id="concern-chips"></div>
+            <span class="error">Select at least one concern</span>
+          </div>
+
+          <div class="field" id="field-concernOther" style="display:none;">
+            <label for="concernOther">Please specify</label>
+            <textarea id="concernOther" name="concernOther" rows="2" placeholder="Tell us more..."></textarea>
+            <span class="error">Please specify</span>
+          </div>
+
+          <div class="field" id="field-source">
+            <label for="source">How did you find us?</label>
+            <select id="source" name="source">
+              <option value="" selected disabled>Select one</option>
+              <option>TikTok</option>
+              <option>Instagram</option>
+              <option>Reddit</option>
+              <option>A friend or colleague</option>
+              <option>Twitter / X</option>
+              <option>Google / search</option>
+              <option>Referred by an Ayna member</option>
+              <option>Referred by an Ayna founder</option>
+              <option>Other</option>
+            </select>
+            <span class="error">Please select one</span>
+          </div>
+
+          <div class="field" id="field-sourceOther" style="display:none;">
+            <label for="sourceOther">Please specify</label>
+            <input id="sourceOther" name="sourceOther" placeholder="Where did you hear about us?" />
+            <span class="error">Please specify</span>
+          </div>
+
+          <button class="btn" id="submitBtn" type="submit">Join the waitlist</button>
+          <p class="status" id="statusText"></p>
+        </form>
+      </section>
+      <p class="footnote">No spam, ever. Your information is never sold or shared.</p>
+    </div>
+
+    <section class="success-view" id="success-view">
+      <h3>You're on the list.</h3>
+      <p>Thanks for joining. We'll reach out as soon as Ayna opens the next wave.</p>
+    </section>
+  </main>
+
+  <script>
+    const CONCERNS = [
+      "Supplement recommendations",
+      "Find a provider who gets it",
+      "Menstrual health solutions",
+      "Address a chronic condition",
+      "Fertility and conception support",
+      "Pregnancy and postpartum care",
+      "Menopause solutions",
+      "Sexual and hormonal health",
+      "Mental health and stress support",
+      "Skin, hair and body care",
+      "Something else"
+    ];
+
+    const selectedConcerns = new Set();
+    const concernChips = document.getElementById("concern-chips");
+    const sourceEl = document.getElementById("source");
+    const statusText = document.getElementById("statusText");
+
+    function createConcernChips() {
+      concernChips.innerHTML = "";
+      CONCERNS.forEach((name) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "chip";
+        btn.textContent = name;
+        btn.setAttribute("aria-pressed", "false");
+        btn.addEventListener("click", () => {
+          if (selectedConcerns.has(name)) {
+            selectedConcerns.delete(name);
+            btn.classList.remove("active");
+            btn.setAttribute("aria-pressed", "false");
+          } else {
+            selectedConcerns.add(name);
+            btn.classList.add("active");
+            btn.setAttribute("aria-pressed", "true");
+          }
+          toggleOtherFields();
+          clearError("concerns");
+        });
+        concernChips.appendChild(btn);
+      });
+    }
+
+    function field(name) { return document.getElementById("field-" + name); }
+    function input(name) { return document.getElementById(name); }
+
+    function setError(name, show) {
+      const el = field(name);
+      if (!el) return;
+      el.classList.toggle("has-error", show);
+    }
+
+    function clearError(name) {
+      const el = field(name);
+      if (el) el.classList.remove("has-error");
+    }
+
+    function clearAllErrors() {
+      document.querySelectorAll(".field").forEach((el) => el.classList.remove("has-error"));
+      statusText.textContent = "";
+      statusText.classList.remove("error-state");
+    }
+
+    function toggleOtherFields() {
+      const concernOtherVisible = selectedConcerns.has("Something else");
+      field("concernOther").style.display = concernOtherVisible ? "flex" : "none";
+      if (!concernOtherVisible) input("concernOther").value = "";
+
+      const sourceOtherVisible = sourceEl.value === "Other";
+      field("sourceOther").style.display = sourceOtherVisible ? "flex" : "none";
+      if (!sourceOtherVisible) input("sourceOther").value = "";
+    }
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function validate() {
+      clearAllErrors();
+      let ok = true;
+
+      if (!input("firstName").value.trim()) { setError("firstName", true); ok = false; }
+      if (!input("lastName").value.trim()) { setError("lastName", true); ok = false; }
+
+      const email = input("email").value.trim();
+      if (!email || !validateEmail(email)) { setError("email", true); ok = false; }
+
+      if (!selectedConcerns.size) { setError("concerns", true); ok = false; }
+
+      if (!input("source").value) { setError("source", true); ok = false; }
+
+      if (selectedConcerns.has("Something else") && !input("concernOther").value.trim()) {
+        setError("concernOther", true);
+        ok = false;
+      }
+      if (input("source").value === "Other" && !input("sourceOther").value.trim()) {
+        setError("sourceOther", true);
+        ok = false;
+      }
+      return ok;
+    }
+
+    sourceEl.addEventListener("change", toggleOtherFields);
+    createConcernChips();
+
+    document.getElementById("waitlist-form").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!validate()) return;
+
+      const payload = {
+        firstName: input("firstName").value.trim(),
+        lastName: input("lastName").value.trim(),
+        email: input("email").value.trim(),
+        concerns: Array.from(selectedConcerns),
+        concernOther: input("concernOther").value.trim(),
+        source: input("source").value,
+        sourceOther: input("sourceOther").value.trim()
+      };
+
+      const submitBtn = document.getElementById("submitBtn");
+      submitBtn.disabled = true;
+      statusText.classList.remove("error-state");
+      statusText.textContent = "Submitting...";
+
+      try {
+        const response = await fetch("/api/waitlist", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const data = await response.json().catch(() => ({}));
+          throw new Error(data.error || "Could not submit form");
+        }
+
+        document.getElementById("form-view").style.display = "none";
+        document.getElementById("success-view").style.display = "block";
+      } catch (error) {
+        statusText.classList.add("error-state");
+        statusText.textContent = error.message || "Something went wrong. Please try again.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
