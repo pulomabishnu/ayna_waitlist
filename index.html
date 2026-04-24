@@ -97,7 +97,7 @@
   </div>
   <div id="form-view" style="width:100%;max-width:500px;display:flex;flex-direction:column;align-items:center;">
     <h1 class="headline"><span class="headline-line">The women's health assistant</span><span class="headline-line">built to find the best</span><span class="headline-line"><em id="rotating-word">tampon</em></span><span class="headline-line">for your body.</span></h1>
-    <p class="subheadline">Ayna builds your health ecosystem for you. We find the health products made for your body and the doctors who actually listen, from big names and small brands alike — so you can stop wasting money and time, and get back to living life to the fullest.</p>
+    <p class="subheadline">Ayna builds your health ecosystem for you using clinical guidance, social media, and scientific literature. We find the health products made for your body and the doctors who actually listen, from big names and small brands alike — so you can stop wasting money and time, and get back to living life to the fullest.</p>
     <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:2rem;animation:fadeUp 0.7s 0.28s ease both;">
       <span style="font-size:0.68rem;font-weight:400;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:0.35rem 0.9rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);white-space:nowrap;">Hormones &amp; cycles</span>
       <span style="font-size:0.68rem;font-weight:400;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:0.35rem 0.9rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);white-space:nowrap;">Fertility &amp; pregnancy</span>
@@ -163,21 +163,20 @@
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwtrQTfrmdbO_tEhebXoMXFr48yvcq7uTcloW7jMJ9VtRnFKpb5-gI0VlRFoOlJiQGzIA/exec';
 const form=document.getElementById('waitlist-form'),formView=document.getElementById('form-view'),successView=document.getElementById('success-view'),submitBtn=document.getElementById('submit-btn');
 const words=[
-  'cycle tracking app',
   'menstrual cup',
-  'health wearable',
-  'period pad',
   'OBGYN',
+  'health wearable',
   'probiotic',
-  'fertility tracker',
-  'tampon',
-  'postpartum kit',
-  'telehealth app',
-  'birth control',
-  'hot flash patch',
+  'cycle tracking app',
+  'period pad',
+  'endometriosis specialist',
   'pelvic floor trainer',
   'prenatal vitamin',
-  'endometriosis specialist',
+  'telehealth app',
+  'tampon',
+  'pelvic floor PT',
+  'smart basal thermometer',
+  'birth control',
   'mental health app'
 ];
 let wordIndex=0;
