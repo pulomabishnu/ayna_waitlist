@@ -14,6 +14,7 @@
     .bg-blobs{display:none}
     .bg-grain{display:none}
     .bg-noise{display:none}
+    .bg-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background:rgba(20,12,5,0.26);}
 
     .page{position:relative;z-index:1;width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5rem 2rem 6rem}
 
@@ -78,7 +79,7 @@
     }
     @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
     @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-    @media(max-width:480px){.page{padding:4rem 1.25rem 5rem}.headline{font-size:2.2rem}.field-row{grid-template-columns:1fr}.form-card{padding:1.6rem 1.25rem}}
+    @media(max-width:480px){.page{padding:4rem 1.25rem 5rem}.sub-wordmark{font-size:0.72rem;color:rgba(255,255,255,0.88)}.headline{font-size:2.25rem;line-height:1.08;max-width:340px;margin-bottom:2.4rem}.subheadline{font-size:1.02rem;line-height:1.7;max-width:360px;color:rgba(255,255,255,0.98);text-shadow:0 2px 12px rgba(0,0,0,0.72),0 1px 4px rgba(0,0,0,0.6)}.bg-overlay{background:rgba(20,12,5,0.44)}.field-row{grid-template-columns:1fr}.form-card{padding:1.6rem 1.25rem}}
   </style>
 </head>
 <body>
@@ -89,14 +90,14 @@
   
   will-change:transform;"></div>
   
-<div style="position:fixed;inset:0;z-index:0;pointer-events:none;background:rgba(20,12,5,0.22);"></div>
+<div class="bg-overlay"></div>
 <div class="page">
   <div style="width:100%;display:flex;flex-direction:column;align-items:center;margin-bottom:0;">
     <div class="wordmark" style="text-align:center;letter-spacing:0.45em;padding-left:0.45em;">Ayna</div>
     <div class="sub-wordmark" style="text-align:center;">Women's health, personalized</div>
   </div>
   <div id="form-view" style="width:100%;max-width:500px;display:flex;flex-direction:column;align-items:center;">
-    <h1 class="headline"><span class="headline-line">The women's health assistant</span><span class="headline-line">built to find the best</span><span class="headline-line"><em id="rotating-word">tampon</em></span><span class="headline-line">for your body.</span></h1>
+    <h1 class="headline"><span class="headline-line">The women's health assistant</span><span class="headline-line">built to find the best</span><span class="headline-line"><em id="rotating-word">period pad</em></span><span class="headline-line">for your body.</span></h1>
     <p class="subheadline">Ayna builds your health ecosystem for you using clinical guidance, social media, and scientific literature. We find the health products made for your body and the doctors who actually listen, from big names and small brands alike — so you can stop wasting money and time, and get back to living life to the fullest.</p>
     <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:2rem;animation:fadeUp 0.7s 0.28s ease both;">
       <span style="font-size:0.68rem;font-weight:400;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:0.35rem 0.9rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);white-space:nowrap;">Hormones &amp; cycles</span>
@@ -163,21 +164,23 @@
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwtrQTfrmdbO_tEhebXoMXFr48yvcq7uTcloW7jMJ9VtRnFKpb5-gI0VlRFoOlJiQGzIA/exec';
 const form=document.getElementById('waitlist-form'),formView=document.getElementById('form-view'),successView=document.getElementById('success-view'),submitBtn=document.getElementById('submit-btn');
 const words=[
-  'menstrual cup',
+  'period pad',
   'OBGYN',
   'health wearable',
-  'probiotic',
-  'cycle tracking app',
-  'period pad',
-  'endometriosis specialist',
+  'hot flash solution',
+  'PCOS lifestyle app',
+  'menstrual cup',
+  'menopause specialist',
   'pelvic floor trainer',
   'prenatal vitamin',
-  'telehealth app',
-  'tampon',
+  'cycle tracking app',
   'pelvic floor PT',
   'smart basal thermometer',
+  'probiotic',
+  'perimenopause app',
   'birth control',
-  'mental health app'
+  'mental health app',
+  'tampon'
 ];
 let wordIndex=0;
 const rotatingWordEl=document.getElementById('rotating-word');
