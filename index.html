@@ -130,8 +130,19 @@
               <style>
                 .concern-opt{display:flex;align-items:center;gap:10px;padding:0.6rem 0.9rem;cursor:pointer;font-size:0.85rem;font-weight:300;color:rgba(255,255,255,0.85);transition:background 0.15s;}
                 .concern-opt:hover{background:rgba(255,255,255,0.08);}
-                .concern-opt input[type=checkbox]{accent-color:#c8841a;width:14px;height:14px;flex-shrink:0;}
-
+                .concern-opt input[type=checkbox]{
+                  -webkit-appearance:none;appearance:none;width:18px;height:18px;margin:0;flex-shrink:0;
+                  border:2px solid rgba(255,255,255,0.5);border-radius:4px;
+                  background:rgba(0,0,0,0.2);cursor:pointer;
+                  transition:background 0.15s,border-color 0.15s,box-shadow 0.15s;
+                }
+                .concern-opt input[type=checkbox]:hover{border-color:rgba(255,255,255,0.75)}
+                .concern-opt input[type=checkbox]:checked{
+                  border-color:#c8841a;
+                  background:#a86f14 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' d='M1.5 5.2L4.6 8.3l6-6.6'/%3E%3C/svg%3E") center/11px 9px no-repeat;
+                  box-shadow:0 0 0 1px rgba(200,132,26,0.45);
+                }
+                .concern-opt input[type=checkbox]:focus-visible{outline:2px solid rgba(200,150,50,0.7);outline-offset:2px}
               </style>
               <label class="concern-opt"><input type="checkbox" value="Supplement recommendations" onchange="updateConcernDisplay()"/> Supplement recommendations</label>
               <label class="concern-opt"><input type="checkbox" value="Find a provider who gets it" onchange="updateConcernDisplay()"/> Find a provider who gets it</label>
