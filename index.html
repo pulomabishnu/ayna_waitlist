@@ -68,6 +68,12 @@
     .btn-text{transition:opacity 0.2s}.btn.loading .btn-text{opacity:0}
     .spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:16px;height:16px;border:2px solid rgba(42,24,8,0.3);border-top-color:#2a1808;border-radius:50%;animation:spin 0.7s linear infinite;opacity:0;transition:opacity 0.2s}
     .btn.loading .spinner{opacity:1}
+    .btn-stack{width:100%;margin-top:0.5rem;display:flex;flex-direction:column;align-items:stretch}
+    .btn-stack .btn{margin-top:0}
+    #first-access-btn{white-space:normal;line-height:1.35;font-size:0.62rem;letter-spacing:0.14em;padding:0.95rem 1.1rem}
+    .btn-secondary{background:rgba(10,5,2,0.42);border:1px solid rgba(200,132,26,0.55);box-shadow:0 4px 20px rgba(0,0,0,0.12);font-size:0.62rem;letter-spacing:0.14em;line-height:1.35;white-space:normal;padding:0.95rem 1.1rem}
+    .btn-secondary:hover{background:rgba(10,5,2,0.54);border-color:rgba(200,132,26,0.85)}
+    .btn-or{margin:0.65rem 0;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;text-align:center;color:rgba(255,255,255,0.55)}
     .privacy{text-align:center;width:100%;max-width:500px;margin-top:1.1rem;margin-bottom:0.9rem;font-size:0.7rem;font-weight:300;color:rgba(255,255,255,0.5);animation:fadeUp 0.7s 0.4s ease both}
     .trust-section{max-width:680px;margin-top:1.3rem;padding:1rem 1.2rem;border:1px solid rgba(255,255,255,0.2);border-radius:14px;background:rgba(12,7,3,0.35);backdrop-filter:blur(10px);animation:fadeUp 0.7s 0.46s ease both}
     .trust-title{font-size:0.9rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.95);text-align:center;margin-bottom:0.55rem}
@@ -175,10 +181,14 @@
 <option>Spoke to an Ayna founder</option>
 <option value="Other">Other</option></select><span class="field-error">Please select one</span></div>
         <div class="field" id="field-source-other" style="display:none"><label>Please specify</label><input type="text" id="source-other" placeholder="Where did you hear about us?"/><span class="field-error">Please specify</span></div>
-        <button type="submit" class="btn" id="submit-btn"><span class="btn-text">Join the waitlist</span><span class="spinner"></span></button>
+        <div class="btn-stack">
+          <button type="button" class="btn" id="first-access-btn"><span class="btn-text">Ayna First Access: Pay as you wish</span><span class="spinner"></span></button>
+          <div class="btn-or" role="separator" aria-label="Or">or</div>
+          <button type="submit" class="btn btn-secondary" id="submit-btn"><span class="btn-text">Join the free waitlist</span><span class="spinner"></span></button>
+        </div>
       </form>
     </div>
-    <p class="privacy">No spam, ever. Your information is never sold or shared. Joining the waitlist means we'll reach out to you when an early version is ready for you to use.</p>
+    <p class="privacy">No spam, ever. Your information is never sold or shared. Joining the waitlist means we'll reach out to you when an early version is ready for you to use, with early access members getting a lifetime discount when we release and able to shape the platform's development.</p>
     <div class="deco-rule"><div class="line"></div><div class="dot"></div><div class="gem"></div><div class="dot"></div><div class="line r"></div></div>
     <div class="trust-section">
       <div class="trust-title">Why trust Ayna?</div>
@@ -189,7 +199,10 @@
 </div>
 <script>
 const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwtrQTfrmdbO_tEhebXoMXFr48yvcq7uTcloW7jMJ9VtRnFKpb5-gI0VlRFoOlJiQGzIA/exec';
+const FIRST_ACCESS_URL='https://buy.stripe.com/dRm28r25G8th5DQ7150ZW00';
+const FIRST_ACCESS_REDIRECT_MS=1000;
 const form=document.getElementById('waitlist-form'),formView=document.getElementById('form-view'),successView=document.getElementById('success-view'),submitBtn=document.getElementById('submit-btn');
+const firstAccessBtn=document.getElementById('first-access-btn');
 const words=[
   'period pad',
   'OBGYN',
@@ -269,17 +282,23 @@ function validate(){clearErrors();let ok=true;if(!document.getElementById('first
     if(document.getElementById('source').value==='Other'&&!document.getElementById('source-other').value.trim()){setError('source-other',true);ok=false}
     return ok}
 
-  function setSubmitting(isSubmitting){
-    submitBtn.disabled=isSubmitting;
-    submitBtn.classList.toggle('loading',isSubmitting);
+  function setFormBusy(isBusy,kind){
+    const fa=document.getElementById('first-access-btn');
+    submitBtn.disabled=isBusy;
+    if(fa)fa.disabled=isBusy;
+    submitBtn.classList.toggle('loading',isBusy&&kind==='waitlist');
+    if(fa)fa.classList.toggle('loading',isBusy&&kind==='firstAccess');
   }
+  function setSubmitting(isSubmitting){setFormBusy(isSubmitting,'waitlist');}
 
-  function buildPayload(){
+  function buildPayload(opts){
+    opts=opts||{};
     const concernOther=document.getElementById('concern-other').value.trim();
     const concerns=[...document.querySelectorAll('#concern-options input[type=checkbox]:checked')].map(c=>c.value).map(v=>v==='Something else'&&concernOther?`Something else: ${concernOther}`:v);
     const sourceSelect=document.getElementById('source').value;
     const sourceOther=document.getElementById('source-other').value.trim();
-    const source=sourceSelect==='Other'&&sourceOther?`Other: ${sourceOther}`:sourceSelect;
+    let source=sourceSelect==='Other'&&sourceOther?`Other: ${sourceOther}`:sourceSelect;
+    if(opts.firstAccess)source='First Access — '+source;
     return {
       ts:new Date().toISOString(),
       first:document.getElementById('first').value.trim(),
@@ -318,6 +337,23 @@ function validate(){clearErrors();let ok=true;if(!document.getElementById('first
       setSubmitting(false);
     }
   });
+  if(firstAccessBtn){
+    firstAccessBtn.addEventListener('click',async()=>{
+      if(!validate())return;
+      setFormBusy(true,'firstAccess');
+      try{
+        await submitToGoogleSheets(buildPayload({firstAccess:true}));
+        setFormBusy(false,'firstAccess');
+        formView.style.display='none';
+        successView.classList.add('visible');
+        setTimeout(()=>{window.location.href=FIRST_ACCESS_URL},FIRST_ACCESS_REDIRECT_MS);
+      }catch(err){
+        console.error('Submission failed:',err);
+        alert('Something went wrong. Please try again.');
+        setFormBusy(false,'firstAccess');
+      }
+    });
+  }
 </script>
 <div style="position:relative;z-index:0;text-align:center;padding:1.5rem 0 1rem;font-family:'Jost',sans-serif;font-size:0.6rem;font-weight:300;color:rgba(255,255,255,0.45);letter-spacing:0.08em;pointer-events:none">photo: @hirayapilates</div>
 </body>
