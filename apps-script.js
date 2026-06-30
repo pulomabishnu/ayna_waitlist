@@ -3,34 +3,45 @@
 //  Deploy this as a Web App (anyone can submit, no auth)
 // ═══════════════════════════════════════════════════════════
 
-const SHEET_NAME = "Waitlist";
-const HEADERS = ["Timestamp", "First Name", "Last Name", "Email", "Phone", "Health Concern", "How They Heard"];
+var SHEET_NAME = "Waitlist";
+var HEADERS = ["Timestamp", "First Name", "Last Name", "Email", "Phone", "Health Concern", "How They Heard"];
 
 function doPost(e) {
   try {
-    const data = JSON.parse(e.postData.contents);
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
-    let sheet = ss.getSheetByName(SHEET_NAME);
+    var data = JSON.parse(e.postData.contents);
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheet = ss.getSheetByName(SHEET_NAME);
 
-    // Create sheet + headers on first run
     if (!sheet) {
       sheet = ss.insertSheet(SHEET_NAME);
       sheet.appendRow(HEADERS);
-      sheet.getRange(1, 1, 1, HEADERS.length)
-        .setFontWeight("bold")
-        .setBackground("#f3ede8");
+      sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight("bold").setBackground("#f3ede8");
       sheet.setFrozenRows(1);
+    } else {
+      // Sheet already exists — insert Phone column after Email if missing
+      var existingHeaders = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+      if (existingHeaders.indexOf("Phone") === -1) {
+        var emailCol = existingHeaders.indexOf("Email") + 1; // 1-based
+        sheet.insertColumnAfter(emailCol);
+        var phoneCell = sheet.getRange(1, emailCol + 1);
+        phoneCell.setValue("Phone");
+        phoneCell.setFontWeight("bold").setBackground("#f3ede8");
+      }
     }
 
-    sheet.appendRow([
-      data.ts || new Date().toISOString(),
-      data.first || "",
-      data.last || "",
-      data.email || "",
-      data.phone || "",
-      data.concern || "",
-      data.source || ""
-    ]);
+    // Write data by matching header names so column order never matters
+    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var fieldMap = {
+      "Timestamp": data.ts || new Date().toISOString(),
+      "First Name": data.first || "",
+      "Last Name": data.last || "",
+      "Email": data.email || "",
+      "Phone": data.phone || "",
+      "Health Concern": data.concern || "",
+      "How They Heard": data.source || ""
+    };
+    var row = headers.map(function(h) { return fieldMap[h] !== undefined ? fieldMap[h] : ""; });
+    sheet.appendRow(row);
 
     return ContentService.createTextOutput(JSON.stringify({ success: true })).setMimeType(ContentService.MimeType.JSON);
 
@@ -39,7 +50,6 @@ function doPost(e) {
   }
 }
 
-// GET handler (keeps the web app alive / health check)
 function doGet() {
   return ContentService.createTextOutput(JSON.stringify({ status: "ok", app: "Ayna Waitlist" })).setMimeType(ContentService.MimeType.JSON);
 }
