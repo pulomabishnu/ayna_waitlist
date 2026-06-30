@@ -32,20 +32,14 @@ function doPost(e) {
       data.source || ""
     ]);
 
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: true }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput(JSON.stringify({ success: true })).setMimeType(ContentService.MimeType.JSON);
 
   } catch (err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: false, error: err.message }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return ContentService.createTextOutput(JSON.stringify({ success: false, error: err.message })).setMimeType(ContentService.MimeType.JSON);
   }
 }
 
 // GET handler (keeps the web app alive / health check)
 function doGet() {
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: "ok", app: "Ayna Waitlist" }))
-    .setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput(JSON.stringify({ status: "ok", app: "Ayna Waitlist" })).setMimeType(ContentService.MimeType.JSON);
 }
