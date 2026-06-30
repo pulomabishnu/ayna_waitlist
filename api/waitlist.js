@@ -1,3 +1,4 @@
+const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
 const WEBHOOK_TIMEOUT_MS = 10000;
 
 function isValidEmail(email) {
@@ -29,13 +30,10 @@ function validatePayload(payload) {
 }
 
 async function sendToGoogleSheets(submission) {
-  const url = process.env.GOOGLE_SCRIPT_URL || process.env.SHEETS_WEBHOOK_URL;
-  if (!url) throw new Error("Missing GOOGLE_SCRIPT_URL environment variable");
-
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), WEBHOOK_TIMEOUT_MS);
   try {
-    const response = await fetch(url, {
+    const response = await fetch(SCRIPT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(submission),
