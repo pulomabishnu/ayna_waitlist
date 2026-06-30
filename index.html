@@ -199,7 +199,6 @@
   <div class="success-screen" id="success-view"><div class="success-icon"><svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg></div><div class="success-title">You're on the list.</div><p class="success-body">We'll be in touch. Ayna is being built for people exactly like you.</p></div>
 </div>
 <script>
-const SCRIPT_URL='https://script.google.com/macros/s/AKfycbwtrQTfrmdbO_tEhebXoMXFr48yvcq7uTcloW7jMJ9VtRnFKpb5-gI0VlRFoOlJiQGzIA/exec';
 const FIRST_ACCESS_URL='https://buy.stripe.com/dRm28r25G8th5DQ7150ZW00';
 const FIRST_ACCESS_REDIRECT_MS=1000;
 const form=document.getElementById('waitlist-form'),formView=document.getElementById('form-view'),successView=document.getElementById('success-view'),submitBtn=document.getElementById('submit-btn');
@@ -312,16 +311,12 @@ function validate(){clearErrors();let ok=true;if(!document.getElementById('first
   }
 
   async function submitToGoogleSheets(payload){
-    if(SCRIPT_URL==='YOUR_APPS_SCRIPT_URL_HERE'){
-      await new Promise(resolve=>setTimeout(resolve,500));
-      return;
-    }
-    await fetch(SCRIPT_URL,{
+    const res=await fetch('/api/waitlist',{
       method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify(payload)
     });
+    if(!res.ok){const d=await res.json().catch(()=>({}));throw new Error(d.error||'Submission failed');}
   }
 
   form.addEventListener('submit',async(e)=>{

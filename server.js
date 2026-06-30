@@ -41,39 +41,29 @@ function normalizeString(value) {
 }
 
 function validatePayload(payload) {
-  const firstName = normalizeString(payload.firstName);
-  const lastName = normalizeString(payload.lastName);
+  const first = normalizeString(payload.first);
+  const last = normalizeString(payload.last);
   const email = normalizeString(payload.email).toLowerCase();
+  const phone = normalizeString(payload.phone);
   const source = normalizeString(payload.source);
-  const sourceOther = normalizeString(payload.sourceOther);
-  const concernOther = normalizeString(payload.concernOther);
-  const concerns = Array.isArray(payload.concerns)
-    ? payload.concerns.map((v) => normalizeString(v)).filter(Boolean)
-    : [];
+  const concern = normalizeString(payload.concern);
 
-  if (!firstName) return { error: "First name is required" };
-  if (!lastName) return { error: "Last name is required" };
+  if (!first) return { error: "First name is required" };
+  if (!last) return { error: "Last name is required" };
   if (!email || !isValidEmail(email)) return { error: "Valid email is required" };
-  if (!source) return { error: "Source is required" };
-  if (!concerns.length) return { error: "At least one concern is required" };
-
-  if (concerns.includes("Something else") && !concernOther) {
-    return { error: "Please specify your concern" };
-  }
-  if (source === "Other" && !sourceOther) {
-    return { error: "Please specify your source" };
-  }
+  if (!phone) return { error: "Phone number is required" };
+  if (!concern) return { error: "Please select at least one concern" };
+  if (!source) return { error: "Please tell us how you found us" };
 
   return {
     value: {
-      firstName,
-      lastName,
+      ts: new Date().toISOString(),
+      first,
+      last,
       email,
-      concerns,
-      concernOther,
-      source,
-      sourceOther,
-      submittedAt: new Date().toISOString()
+      phone,
+      concern,
+      source
     }
   };
 }
