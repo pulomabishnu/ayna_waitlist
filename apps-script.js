@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════════════
 
 const SHEET_NAME = "Waitlist";
-const HEADERS = ["Timestamp", "First Name", "Last Name", "Email", "Health Concern", "How They Heard"];
+const HEADERS = ["Timestamp", "First Name", "Last Name", "Email", "Phone", "Health Concern", "How They Heard"];
 
 function doPost(e) {
   try {
@@ -27,6 +27,7 @@ function doPost(e) {
       data.first || "",
       data.last || "",
       data.email || "",
+      data.phone || "",
       data.concern || "",
       data.source || ""
     ]);

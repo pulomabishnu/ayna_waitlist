@@ -135,6 +135,7 @@
           <div class="field" id="field-last"><label>Last name</label><input type="text" id="last" placeholder="Chen" autocomplete="family-name"/><span class="field-error">Required</span></div>
         </div>
         <div class="field" id="field-email"><label>Email address</label><input type="email" id="email" placeholder="you@example.com" autocomplete="email"/><span class="field-error">Please enter a valid email</span></div>
+        <div class="field" id="field-phone"><label>Phone number <span style="font-size:0.6rem;opacity:0.7;text-transform:none;letter-spacing:0;">(optional — for SMS updates)</span></label><input type="tel" id="phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/></div>
         <div class="field" id="field-concern">
           <label>What brings you here? <span style="font-size:0.6rem;opacity:0.7;text-transform:none;letter-spacing:0;">(select all that apply)</span></label>
           <div id="concern-dropdown" style="position:relative;z-index:50;">
@@ -304,6 +305,7 @@ function validate(){clearErrors();let ok=true;if(!document.getElementById('first
       first:document.getElementById('first').value.trim(),
       last:document.getElementById('last').value.trim(),
       email:document.getElementById('email').value.trim(),
+      phone:document.getElementById('phone').value.trim(),
       concern:concerns.join(' | '),
       source
     };
