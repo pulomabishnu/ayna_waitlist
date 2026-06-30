@@ -1,4 +1,4 @@
-const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyLRA0lgJ68L0L3kwEw283EOlwrbBgBoTZ6ouMsXtQ7kfcLtEuIr2duqBDDRV0m36lLoQ/exec";
 const WEBHOOK_TIMEOUT_MS = 10000;
 
 function isValidEmail(email) {
