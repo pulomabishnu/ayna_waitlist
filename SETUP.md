@@ -54,6 +54,30 @@ Push to GitHub → Vercel picks it up automatically. The waitlist page will be l
 
 ---
 
+## Step 5: Connect Substack (auto-subscribe waitlist signups)
+
+Every new waitlist signup is automatically added as a Substack subscriber. This uses Substack's private (undocumented) subscriber API, authenticated with your own logged-in session cookie — there's no official public API for this.
+
+1. **Get your publication's subdomain.** If your Substack URL is `ayna.substack.com`, the subdomain is `ayna`.
+2. **Get your session cookie:**
+   - Log in to your Substack publication's dashboard in a browser.
+   - Open DevTools (F12) → **Application** tab (Chrome) or **Storage** tab (Firefox) → **Cookies** → `https://[yourpub].substack.com`.
+   - Find the cookie named `substack.sid` and copy its value.
+3. **Store both values in Apps Script (not in code):**
+   - In the Apps Script editor, click the gear icon (**Project Settings**) in the left sidebar.
+   - Scroll to **Script Properties** → **Add script property**.
+   - Add `SUBSTACK_PUB` = your subdomain (e.g. `ayna`).
+   - Add `SUBSTACK_SID` = the cookie value you copied.
+   - Save.
+4. Re-run **Deploy → Manage deployments** and use the existing deployment (no need to redeploy for property changes to take effect).
+
+**Notes:**
+- Because this relies on a personal session cookie, it will stop working if you log out of Substack elsewhere or the session expires — you'll need to repeat step 2 and update the property.
+- If `SUBSTACK_PUB` or `SUBSTACK_SID` aren't set, the script silently skips the Substack step and still writes to the Sheet — check **Executions** in the Apps Script editor to debug.
+- This never blocks or fails the waitlist submission itself — errors are caught and logged, not thrown.
+
+---
+
 ## Notes
 
 - Every submission lands in the **Waitlist** tab of your Google Sheet with a timestamp.
