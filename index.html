@@ -21,11 +21,11 @@
     .bg-noise{display:none}
     .bg-overlay{position:fixed;inset:0;z-index:0;pointer-events:none;background:rgba(20,12,5,0.26);}
 
-    .page{position:relative;z-index:1;width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5rem 2rem 6rem}
+    .page{position:relative;z-index:1;width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2rem 4rem}
 
     .wordmark{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.6rem;letter-spacing:0.45em;color:#c8841a;text-transform:uppercase;margin-bottom:0.3rem;animation:fadeUp 0.7s ease both;text-shadow:0 2px 12px rgba(0,0,0,0.4);text-align:center;width:100%}
-    .sub-wordmark{font-size:0.63rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.75);font-weight:400;margin-bottom:3rem;animation:fadeUp 0.7s 0.08s ease both}
-    .headline{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:3rem;line-height:1.05;text-align:center;color:#fff;margin-bottom:3rem;animation:fadeUp 0.7s 0.15s ease both;max-width:640px;text-shadow:0 2px 16px rgba(0,0,0,0.4);display:flex;flex-direction:column;align-items:center;gap:0.18em}
+    .sub-wordmark{font-size:0.63rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.75);font-weight:400;margin-bottom:1.75rem;animation:fadeUp 0.7s 0.08s ease both}
+    .headline{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:2.6rem;line-height:1.08;text-align:center;color:#fff;margin-bottom:1.75rem;animation:fadeUp 0.7s 0.15s ease both;max-width:640px;text-shadow:0 2px 16px rgba(0,0,0,0.4);display:flex;flex-direction:column;align-items:center;gap:0.18em}
     .headline em{font-style:italic;color:#c8841a}
     .headline-line{display:block;text-align:center;white-space:nowrap}
     @keyframes wordFadeIn {
@@ -43,8 +43,8 @@
       white-space: nowrap;
       animation: wordFadeIn 0.4s ease both;
     }
-    .subheadline{font-weight:300;font-size:0.95rem;line-height:1.8;text-align:center;color:rgba(255,255,255,0.88);max-width:680px;margin-bottom:2.5rem;animation:fadeUp 0.7s 0.22s ease both;text-shadow:0 2px 10px rgba(20,0,40,0.65),0 1px 3px rgba(0,0,0,0.4)}
-    .deco-rule{display:flex;align-items:center;gap:10px;margin-bottom:2.5rem;animation:fadeUp 0.7s 0.28s ease both}
+    .subheadline{font-weight:300;font-size:0.95rem;line-height:1.7;text-align:center;color:rgba(255,255,255,0.88);max-width:680px;margin-bottom:1.5rem;animation:fadeUp 0.7s 0.22s ease both;text-shadow:0 2px 10px rgba(20,0,40,0.65),0 1px 3px rgba(0,0,0,0.4)}
+    .deco-rule{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem;animation:fadeUp 0.7s 0.28s ease both}
     .deco-rule .line{width:55px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.6))}
     .deco-rule .line.r{background:linear-gradient(90deg,rgba(255,255,255,0.6),transparent)}
     .deco-rule .gem{width:6px;height:6px;background:rgba(255,240,200,0.95);transform:rotate(45deg);box-shadow:0 0 8px rgba(255,200,150,0.7)}
@@ -95,7 +95,7 @@
     }
     @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
     @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-    @media(max-width:480px){.page{padding:4rem 1.25rem 5rem}.sub-wordmark{font-size:0.72rem;color:rgba(255,255,255,0.88)}.headline{font-size:2.25rem;line-height:1.08;max-width:340px;margin-bottom:2.4rem}.subheadline{font-size:1.02rem;line-height:1.7;max-width:360px;color:rgba(255,255,255,0.98);text-shadow:0 2px 12px rgba(0,0,0,0.72),0 1px 4px rgba(0,0,0,0.6)}.bg-overlay{background:rgba(20,12,5,0.44)}.field-row{grid-template-columns:1fr}.form-card{padding:1.6rem 1.25rem}}
+    @media(max-width:480px){.page{padding:2.5rem 1.25rem 3rem}.sub-wordmark{font-size:0.72rem;color:rgba(255,255,255,0.88)}.headline{font-size:2.1rem;line-height:1.1;max-width:340px;margin-bottom:1.5rem}.subheadline{font-size:1.02rem;line-height:1.6;max-width:360px;color:rgba(255,255,255,0.98);text-shadow:0 2px 12px rgba(0,0,0,0.72),0 1px 4px rgba(0,0,0,0.6)}.bg-overlay{background:rgba(20,12,5,0.44)}.field-row{grid-template-columns:1fr}.form-card{padding:1.6rem 1.25rem}}
   </style>
 </head>
 <body>
@@ -115,7 +115,7 @@
   <div id="form-view" style="width:100%;max-width:680px;display:flex;flex-direction:column;align-items:center;">
     <h1 class="headline"><span class="headline-line">The women's health manager</span><span class="headline-line">built to find the best</span><span class="headline-line"><em id="rotating-word">period pad</em></span><span class="headline-line">for your body.</span></h1>
     <p class="subheadline">Women's health shopping is complicated: telehealth services, devices, apps, the list goes on. Influencers, friends and family, clinicians, and literature is a lot to sift through. Instead, just tell us about you, and we instantly tell you what products are worth buying based on your EHR, wearable data, and personal goals. Yes, we update your shopping list in real-time as your health evolves. We bring you the evidence from social media, clinicians, and literature so you can decide to buy something in 10 seconds instead of weeks.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:2rem;animation:fadeUp 0.7s 0.28s ease both;">
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:1.25rem;animation:fadeUp 0.7s 0.28s ease both;">
       <span style="font-size:0.68rem;font-weight:400;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:0.35rem 0.9rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);white-space:nowrap;">Hormones &amp; cycles</span>
       <span style="font-size:0.68rem;font-weight:400;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:0.35rem 0.9rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);white-space:nowrap;">Fertility &amp; pregnancy</span>
       <span style="font-size:0.68rem;font-weight:400;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:0.35rem 0.9rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);white-space:nowrap;">Pelvic &amp; reproductive health</span>
