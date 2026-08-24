@@ -1,4 +1,9 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyLRA0lgJ68L0L3kwEw283EOlwrbBgBoTZ6ouMsXtQ7kfcLtEuIr2duqBDDRV0m36lLoQ/exec";
+const { randomUUID } = require("crypto");
+
+const SCRIPT_URL =
+  process.env.WAITLIST_SCRIPT_URL ||
+  "https://script.google.com/macros/s/AKfycbzqazFjOhF4xnNOMKfVR99AvnJNzbC3-6qHWIHTBGbddLuKU9OjnneewfLWXjJlsdfvJQ/exec";
+
 const WEBHOOK_TIMEOUT_MS = 10000;
 
 function isValidEmail(email) {
@@ -19,42 +24,77 @@ function validatePayload(payload) {
 
   if (!first) return { error: "First name is required" };
   if (!last) return { error: "Last name is required" };
-  if (!email || !isValidEmail(email)) return { error: "Valid email is required" };
+  if (!email || !isValidEmail(email)) {
+    return { error: "Valid email is required" };
+  }
   if (!phone) return { error: "Phone number is required" };
-  if (!concern) return { error: "Please select at least one concern" };
-  if (!source) return { error: "Please tell us how you found us" };
+  if (!concern) {
+    return { error: "Please select at least one concern" };
+  }
+  if (!source) {
+    return { error: "Please tell us how you found us" };
+  }
 
   return {
-    value: { ts: new Date().toISOString(), first, last, email, phone, concern, source }
+    value: {
+      submissionId: randomUUID(),
+      ts: new Date().toISOString(),
+      first,
+      last,
+      email,
+      phone,
+      concern,
+      source
+    }
   };
 }
 
 async function sendToGoogleSheets(submission) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), WEBHOOK_TIMEOUT_MS);
+
   try {
     const response = await fetch(SCRIPT_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(submission),
       signal: controller.signal
     });
 
     const text = await response.text();
-    if (!response.ok) {
-      throw new Error(`Sheets webhook failed (${response.status}): ${text.slice(0, 200)}`);
+
+    let parsed;
+    try {
+      parsed = JSON.parse(text);
+    } catch (err) {
+      throw new Error(
+        `Sheets webhook returned invalid JSON: ${text.slice(0, 200)}`
+      );
     }
 
-    try {
-      const parsed = JSON.parse(text);
-      if (parsed && parsed.success === false) {
-        throw new Error(parsed.error || "Sheets webhook returned success=false");
-      }
-    } catch {
-      // non-JSON response is fine
+    if (!response.ok) {
+      throw new Error(
+        `Sheets webhook failed (${response.status}): ${
+          parsed.error || text.slice(0, 200)
+        }`
+      );
     }
+
+    // Never acknowledge a signup unless Apps Script explicitly confirms it.
+    if (parsed.success !== true) {
+      throw new Error(
+        parsed.error || "Sheets webhook did not confirm submission"
+      );
+    }
+
+    return parsed;
   } catch (err) {
-    if (err && err.name === "AbortError") throw new Error("Sheets webhook timed out");
+    if (err && err.name === "AbortError") {
+      throw new Error("Sheets webhook timed out");
+    }
+
     throw err;
   } finally {
     clearTimeout(timeout);
@@ -63,18 +103,55 @@ async function sendToGoogleSheets(submission) {
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
+    return res.status(405).json({
+      error: "Method not allowed"
+    });
+  }
+
+  let checked;
+
+  try {
+    const body =
+      typeof req.body === "object"
+        ? req.body
+        : JSON.parse(req.body || "{}");
+
+    checked = validatePayload(body);
+  } catch (err) {
+    return res.status(400).json({
+      error: "Invalid request body"
+    });
+  }
+
+  if (checked.error) {
+    return res.status(400).json({
+      error: checked.error
+    });
   }
 
   try {
-    const body = typeof req.body === "object" ? req.body : JSON.parse(req.body || "{}");
-    const checked = validatePayload(body);
-    if (checked.error) return res.status(400).json({ error: checked.error });
-
     await sendToGoogleSheets(checked.value);
-    return res.status(201).json({ success: true });
+
+    return res.status(201).json({
+      success: true,
+      submissionId: checked.value.submissionId
+    });
   } catch (err) {
-    const message = err && err.message ? err.message : "Unexpected error";
-    return res.status(500).json({ error: message });
+    const message =
+      err && err.message
+        ? err.message
+        : "Unable to save waitlist submission";
+
+    // Only log the random ID, never the person's private info.
+    console.error("Waitlist persistence failed", {
+      submissionId: checked.value.submissionId,
+      message
+    });
+
+    return res.status(502).json({
+      success: false,
+      submissionId: checked.value.submissionId,
+      error: "We couldn't save your signup. Please try again."
+    });
   }
 };
