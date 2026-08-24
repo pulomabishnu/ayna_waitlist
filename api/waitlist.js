@@ -4,7 +4,7 @@ const SCRIPT_URL =
   process.env.WAITLIST_SCRIPT_URL ||
   "https://script.google.com/macros/s/AKfycbzqazFjOhF4xnNOMKfVR99AvnJNzbC3-6qHWIHTBGbddLuKU9OjnneewfLWXjJlsdfvJQ/exec";
 
-const WEBHOOK_TIMEOUT_MS = 10000;
+const WEBHOOK_TIMEOUT_MS = 20000;
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
