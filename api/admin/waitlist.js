@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqazFjOhF4xnNOMKfVR99AvnJNzbC3-6qHWIHTBGbddLuKU9OjnneewfLWXjJlsdfvJQ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtriZSCupCOC8pemVhY7ktCpSbIp3T9_eFNwR6wWbabzVvw9olqoYfMsfxlqxPrmvikQ/exec";
 
 module.exports = async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
