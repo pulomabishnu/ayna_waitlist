@@ -850,11 +850,11 @@
     .store-badge .badge-text{display:flex;flex-direction:column;line-height:1.15;}
     .store-badge .badge-text .badge-sub{font-size:0.58rem;font-weight:300;letter-spacing:0.03em;opacity:0.9;}
     .store-badge .badge-text .badge-main{font-size:0.92rem;font-weight:500;letter-spacing:0.01em;font-family:'DM Sans',sans-serif;}
-    .checkbox-row{display:flex;align-items:flex-start;gap:0.55rem;text-transform:none;letter-spacing:0.01em;font-size:0.82rem;font-weight:300;color:rgba(255,255,255,0.95);cursor:pointer;line-height:1.4;}
-    .checkbox-row input[type=checkbox]{appearance:none;-webkit-appearance:none;flex-shrink:0;width:18px;height:18px;margin-top:0.1rem;border-radius:5px;border:1px solid rgba(255,255,255,0.55);background:rgba(255,255,255,0.12);cursor:pointer;position:relative;}
+    .checkbox-row{display:flex;align-items:flex-start;gap:0.55rem;text-transform:none;letter-spacing:0.01em;font-size:0.82rem;font-weight:500;color:#2a1808;text-shadow:0 1px 2px rgba(255,255,255,0.25);cursor:pointer;line-height:1.4;}
+    .checkbox-row input[type=checkbox]{appearance:none;-webkit-appearance:none;flex-shrink:0;width:18px;height:18px;margin-top:0.1rem;border-radius:5px;border:1px solid rgba(42,24,8,0.55);background:rgba(255,255,255,0.55);cursor:pointer;position:relative;}
     .checkbox-row input[type=checkbox]:checked{background:#F0A84B;border-color:#F0A84B;}
     .checkbox-row input[type=checkbox]:checked::after{content:'';position:absolute;left:5px;top:1px;width:5px;height:9px;border:solid #2a1808;border-width:0 2px 2px 0;transform:rotate(45deg);}
-    .field.has-error .checkbox-row{color:rgba(255,220,180,0.95);}
+    .field.has-error .checkbox-row{color:#8a2d0e;}
 
   </style>
 </head>
@@ -991,7 +991,7 @@
           <div class="field" id="field-first"><label>First name</label><input type="text" id="first" placeholder="Maya" autocomplete="given-name"/><span class="field-error">Required</span></div>
           <div class="field" id="field-last"><label>Last name</label><input type="text" id="last" placeholder="Chen" autocomplete="family-name"/><span class="field-error">Required</span></div>
         </div>
-        <div class="field" id="field-email"><label>Email address <span style="font-size:0.6rem;opacity:0.7;text-transform:none;letter-spacing:0;">(the email you use for Apple login)</span></label><input type="email" id="email" placeholder="you@example.com" autocomplete="email"/><span class="field-error">Please enter a valid email</span></div>
+        <div class="field" id="field-email"><label>Email address <span style="font-size:0.6rem;opacity:0.7;text-transform:none;letter-spacing:0;">(the email you use for Apple or Google login)</span></label><input type="email" id="email" placeholder="you@example.com" autocomplete="email"/><span class="field-error">Please enter a valid email</span></div>
         <div class="field" id="field-phone"><label>Phone number</label><input type="tel" id="phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/><span class="field-error">Required</span></div>
         <div class="field" id="field-device"><label>Device</label><select id="device"><option value="" disabled selected>Select one</option><option>iPhone</option><option>Android</option><option>Both</option></select><span class="field-error">Please select one</span></div>
         <div class="field" id="field-concern">
@@ -1038,7 +1038,6 @@
           <span class="field-error" id="concern-error" style="display:none;">Please select at least one</span>
         </div>
         <div class="field" id="field-concern-other" style="display:none"><label>Please specify</label><input type="text" id="concern-other" placeholder="Tell us more..."/><span class="field-error">Please specify</span></div>
-        <div class="field" id="field-lifestage"><label>Life stage <span style="font-size:0.6rem;opacity:0.7;text-transform:none;letter-spacing:0;">(optional — helps us match testers to the right features)</span></label><select id="lifestage"><option value="" selected>Prefer not to say</option><option>Menstrual health</option><option>Trying to conceive</option><option>Pregnancy/postpartum</option><option>Perimenopause/menopause</option><option>General wellness</option></select></div>
         <div class="field" id="field-source"><label>How did you find us?</label><select id="source" onchange="toggleOther('source')"><option value="" disabled selected>Select one</option><option>TikTok</option><option>Instagram</option><option>LinkedIn</option><option>Reddit</option><option>A friend or colleague</option><option>Twitter / X</option><option>Google / search</option><option>Referred by an Ayna member</option>
 <option>Spoke to Eliz, Puloma, Ameera, or Aditi</option>
 <option>MIT AI-Powered Women Conference</option>
@@ -1183,7 +1182,6 @@ function validate(){clearErrors();let ok=true;if(!document.getElementById('first
       phone:document.getElementById('phone').value.trim(),
       device:document.getElementById('device').value,
       concern:concerns.join(' | '),
-      lifeStage:document.getElementById('lifestage').value,
       source,
       agreePrerelease:document.getElementById('agree-prerelease').checked,
       agreeConsent:document.getElementById('agree-consent').checked

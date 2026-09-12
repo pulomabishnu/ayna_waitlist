@@ -21,7 +21,6 @@ function validatePayload(payload) {
   const device = normalizeString(payload.device);
   const source = normalizeString(payload.source);
   const concern = normalizeString(payload.concern);
-  const lifeStage = normalizeString(payload.lifeStage);
   const agreePrerelease = payload.agreePrerelease === true;
   const agreeConsent = payload.agreeConsent === true;
 
@@ -55,7 +54,6 @@ function validatePayload(payload) {
       phone,
       device,
       concern,
-      lifeStage,
       source,
       agreePrerelease,
       agreeConsent

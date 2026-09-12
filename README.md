@@ -6,7 +6,7 @@ Waitlist landing page + Node API that writes signups to Google Sheets (via Googl
 
 Create a "Waitlist" sheet with a header row using (a subset of) these column names, in any order:
 
-`timestamp | first name | last name | email | phone | device | health concern | life stage | how they heard | pre-release ack | 18+ consent`
+`timestamp | first name | last name | email | phone | device | health concern | how they heard | pre-release ack | 18+ consent`
 
 The actual Apps Script (`apps-script.js`) also maintains a "Raw Submissions" sheet as a full audit log of every request, including delivery status.
 
