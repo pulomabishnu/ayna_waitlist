@@ -8,10 +8,10 @@
   <meta property="og:description" content="The women's health manager built for you."/>
   <meta name="twitter:title" content="Ayna - The women's health manager built for you"/>
   <meta name="twitter:description" content="The women's health manager built for you."/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Jost',sans-serif;min-height:100vh;overflow-x:hidden;position:relative;}
+    body{font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;position:relative;}
 
     /* ── LEFT REFERENCE: soft pink/lavender, coral blob, halftone grain ── */
     .bg{position:fixed;inset:0;z-index:0;background:#ffd0c0;}
@@ -23,9 +23,9 @@
 
     .page{position:relative;z-index:1;width:100%;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5rem 2rem 6rem}
 
-    .wordmark{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.6rem;letter-spacing:0.45em;color:#c8841a;text-transform:uppercase;margin-bottom:0.3rem;animation:fadeUp 0.7s ease both;text-shadow:0 2px 12px rgba(0,0,0,0.4);text-align:center;width:100%}
+    .wordmark{font-family:'Playfair Display',serif;font-weight:300;font-size:2.6rem;letter-spacing:0.45em;color:#c8841a;text-transform:uppercase;margin-bottom:0.3rem;animation:fadeUp 0.7s ease both;text-shadow:0 2px 12px rgba(0,0,0,0.4);text-align:center;width:100%}
     .sub-wordmark{font-size:0.63rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.75);font-weight:400;margin-bottom:3rem;animation:fadeUp 0.7s 0.08s ease both}
-    .headline{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:3rem;line-height:1.05;text-align:center;color:#fff;margin-bottom:3rem;animation:fadeUp 0.7s 0.15s ease both;max-width:640px;text-shadow:0 2px 16px rgba(0,0,0,0.4);display:flex;flex-direction:column;align-items:center;gap:0.18em}
+    .headline{font-family:'Playfair Display',serif;font-weight:400;font-size:3rem;line-height:1.05;text-align:center;color:#fff;margin-bottom:3rem;animation:fadeUp 0.7s 0.15s ease both;max-width:640px;text-shadow:0 2px 16px rgba(0,0,0,0.4);display:flex;flex-direction:column;align-items:center;gap:0.18em}
     .headline em{font-style:italic;color:#c8841a}
     .headline-line{display:block;text-align:center;white-space:nowrap}
     @keyframes wordFadeIn {
@@ -55,7 +55,7 @@
     .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
     .field{display:flex;flex-direction:column;gap:0.35rem}
     label{font-size:0.63rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.95);font-weight:500;letter-spacing:0.18em}
-    input,select{font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:300;background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.35);border-radius:9px;color:#fff;padding:0.72rem 0.9rem;width:100%;transition:border-color 0.2s,background 0.2s,box-shadow 0.2s;outline:none;appearance:none;-webkit-appearance:none}
+    input,select{font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:300;background:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.35);border-radius:9px;color:#fff;padding:0.72rem 0.9rem;width:100%;transition:border-color 0.2s,background 0.2s,box-shadow 0.2s;outline:none;appearance:none;-webkit-appearance:none}
     input::placeholder{color:rgba(255,255,255,0.7)}
     input:focus,select:focus{border-color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.3);box-shadow:0 0 0 3px rgba(255,255,255,0.15)}
     select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,0.65)'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.9rem center;padding-right:2.4rem;cursor:pointer;background-color:rgba(255,255,255,0.22)}
@@ -63,7 +63,7 @@
     .field-error{font-size:0.7rem;color:rgba(255,240,200,0.95);display:none}
     .field.has-error input,.field.has-error select{border-color:rgba(255,220,180,0.8)}
     .field.has-error .field-error{display:block}
-    .btn{font-family:'Jost',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;background:rgba(10,5,2,0.72);color:#fff;border:none;border-radius:9px;padding:1rem 2rem;cursor:pointer;width:100%;margin-top:0.5rem;position:relative;overflow:hidden;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;box-shadow:0 4px 24px rgba(0,0,0,0.12)}
+    .btn{font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;background:rgba(10,5,2,0.72);color:#fff;border:none;border-radius:9px;padding:1rem 2rem;cursor:pointer;width:100%;margin-top:0.5rem;position:relative;overflow:hidden;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;box-shadow:0 4px 24px rgba(0,0,0,0.12)}
     .btn:hover{background:rgba(255,255,255,0.92);transform:scale(1.02);font-weight:700;}.btn:active{transform:scale(0.99)}.btn:disabled{opacity:0.5;cursor:not-allowed}
     .btn-text{transition:opacity 0.2s}.btn.loading .btn-text{opacity:0}
     .spinner{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:16px;height:16px;border:2px solid rgba(42,24,8,0.3);border-top-color:#2a1808;border-radius:50%;animation:spin 0.7s linear infinite;opacity:0;transition:opacity 0.2s}
@@ -80,7 +80,7 @@
     .success-screen.visible{display:flex;animation:fadeUp 0.6s ease both}
     .success-icon{width:56px;height:56px;border-radius:50%;border:1px solid rgba(255,255,255,0.25);background:rgba(255,255,255,0.18);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem}
     .success-icon svg{width:22px;height:22px;stroke:#fff}
-    .success-title{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:400;color:#fff;margin-bottom:0.8rem}
+    .success-title{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:400;color:#fff;margin-bottom:0.8rem}
     .success-body{font-size:0.9rem;font-weight:300;color:rgba(255,255,255,0.8);line-height:1.8}
     @keyframes orbFloat{
       0%   { transform: translateY(0px) scale(1); }
@@ -95,27 +95,25 @@
 
     /* Ayna MVP-aligned waitlist redesign — presentation only */
     :root{
-      --ayna-bg:#F3EFE9;
+      --ayna-bg:#242A52;
       --ayna-surface:#FFFCF9;
       --ayna-white:#FFFFFF;
       --ayna-text:#292524;
-      --ayna-muted:#78716C;
+      --ayna-muted:rgba(244,240,250,0.78);
       --ayna-navy:#242A52;
       --ayna-plum:#4E3866;
       --ayna-terra:#A2603C;
       --ayna-amber:#FFC774;
+      --ayna-gold:#F0A84B;
       --ayna-border:#E1D5CE;
       --ayna-soft:#FFEFD6;
-      --ayna-shadow:0 20px 48px rgba(28,25,23,.09);
+      --ayna-shadow:0 24px 60px rgba(15,10,30,.35);
     }
 
     body{background:var(--ayna-bg);color:var(--ayna-text);}
 
     .bg{
-      background:
-        radial-gradient(circle at 8% 8%,rgba(255,199,116,.24),transparent 30%),
-        radial-gradient(circle at 90% 18%,rgba(78,56,102,.12),transparent 30%),
-        linear-gradient(180deg,#F7F2EC 0%,var(--ayna-bg) 100%);
+      background:linear-gradient(125deg,#242A52 0%,#33305F 32%,#4E3866 58%,#7A4A55 82%,#A2603C 100%);
     }
 
     #orb,.bg-overlay{display:none!important;}
@@ -127,29 +125,25 @@
     }
 
     .page>div:first-child{
-      width:min(1120px,100%)!important;
+      width:min(1240px,100%)!important;
       align-items:flex-start!important;
-      margin:0 auto .9rem!important;
+      margin:0 auto!important;
     }
 
     .wordmark{
       width:auto;
       padding-left:0!important;
       margin:0;
-      color:var(--ayna-navy);
+      color:var(--ayna-gold);
+      font-style:italic;
+      font-weight:500;
       font-size:1.9rem;
-      letter-spacing:.34em!important;
+      letter-spacing:.06em!important;
+      text-transform:none;
       text-align:left!important;
       text-shadow:none;
     }
 
-    .sub-wordmark{
-      margin:.15rem 0 0;
-      color:var(--ayna-muted);
-      font-size:.62rem;
-      letter-spacing:.18em;
-      text-align:left!important;
-    }
 
     #form-view{
       width:min(1120px,100%)!important;
@@ -167,22 +161,22 @@
       grid-row:1;
       max-width:600px;
       margin:2.25rem 0 .9rem;
-      color:var(--ayna-navy);
-      font-family:'Jost',sans-serif;
+      color:#F4F0FA;
+      font-family:'Playfair Display',serif;
       font-size:clamp(2.75rem,4.2vw,4.15rem);
       font-weight:400;
       line-height:1.02;
       letter-spacing:-.035em;
       text-align:left;
       align-items:flex-start;
-      text-shadow:none;
+      text-shadow:0 2px 16px rgba(0,0,0,0.25);
     }
 
     .headline-line{white-space:normal;text-align:left;}
 
     .headline em{
-      color:var(--ayna-terra);
-      font-family:'Cormorant Garamond',serif;
+      color:var(--ayna-gold);
+      font-family:'Playfair Display',serif;
       font-weight:400;
     }
 
@@ -191,7 +185,7 @@
       grid-row:2;
       max-width:590px;
       margin:0 0 .8rem;
-      color:#57534E;
+      color:rgba(244,240,250,0.82);
       font-size:1rem;
       font-weight:300;
       line-height:1.65;
@@ -199,7 +193,7 @@
       text-shadow:none;
     }
 
-    #form-view>div:nth-child(3){
+    .ayna-tags{
       grid-column:1;
       grid-row:3;
       justify-content:flex-start!important;
@@ -207,7 +201,7 @@
       max-width:600px;
     }
 
-    #form-view>div:nth-child(3)>span{
+    .ayna-tags>span{
       border-color:var(--ayna-border)!important;
       background:rgba(255,255,255,.56)!important;
       color:#57534E!important;
@@ -232,7 +226,7 @@
     }
 
     .form-card::before{
-      content:"Join the Ayna waitlist";
+      content:"ayna Mobile Exclusive Access";
       display:block;
       margin:0 0 1.1rem;
       color:var(--ayna-navy);
@@ -314,18 +308,18 @@
     #submit-btn{
       order:1;
       min-height:50px;
-      background:var(--ayna-navy);
-      border:1px solid var(--ayna-navy);
-      color:#fff;
+      background:var(--ayna-gold);
+      border:1px solid var(--ayna-gold);
+      color:var(--ayna-navy);
       font-size:.7rem;
       letter-spacing:.15em;
-      box-shadow:0 8px 22px rgba(36,42,82,.18);
+      box-shadow:0 8px 22px rgba(240,168,75,.35);
     }
 
     #submit-btn:hover{
-      background:var(--ayna-plum);
-      border-color:var(--ayna-plum);
-      color:#fff;
+      background:#F7BD6E;
+      border-color:#F7BD6E;
+      color:var(--ayna-navy);
       transform:translateY(-1px);
     }
 
@@ -356,7 +350,7 @@
       grid-row:5;
       max-width:500px;
       margin:.65rem 0 0;
-      color:var(--ayna-muted);
+      color:rgba(244,240,250,0.6);
       font-size:.67rem;
       line-height:1.55;
       text-align:left;
@@ -446,7 +440,7 @@
         line-height:1.55;
       }
 
-      #form-view>div:nth-child(3){display:none!important;}
+      .ayna-tags{display:none!important;}
 
       .form-card{
         order:3;
@@ -512,7 +506,7 @@
 
 
     /* Ultra-light waitlist content pass */
-    #form-view>div:nth-child(3){
+    .ayna-tags{
       display:none!important;
     }
 
@@ -555,6 +549,297 @@
       }
     }
 
+
+    /* ── Left column: headline + ecosystem preview ───────────────── */
+    #form-view{
+      width:min(1240px,100%)!important;
+      max-width:1240px!important;
+      grid-template-columns:minmax(0,1fr) minmax(400px,440px);
+      column-gap:clamp(2rem,4.5vw,4.5rem);
+    }
+
+    .ayna-left{
+      grid-column:1;
+      grid-row:1 / span 5;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      min-width:0;
+      width:100%;
+    }
+
+    .form-card{grid-column:2;grid-row:1;margin-top:1.15rem;}
+    .privacy{grid-column:2;grid-row:2;}
+    .success-screen{grid-column:2;grid-row:1;margin-top:1.15rem;}
+
+    .ayna-left .headline{margin-top:1.15rem;margin-bottom:1.15rem;}
+
+    .ayna-eco{
+      grid-column:1 / -1;
+      grid-row:6;
+      width:100%;
+      margin-top:2.5rem;
+    }
+
+    .ayna-orbit-stage{
+      position:relative;
+      --r:160px;
+      width:320px;
+      height:320px;
+      margin:1.9rem auto .5rem;
+      flex:none;
+    }
+
+    .ayna-orbit-ring{
+      position:absolute;
+      top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      border:1px dashed rgba(255,255,255,.26);
+      border-radius:50%;
+    }
+    .ayna-orbit-ring.r1{width:100%;height:100%;}
+    .ayna-orbit-ring.r2{width:80%;height:80%;border-color:rgba(255,255,255,.19);}
+    .ayna-orbit-ring.r3{width:61%;height:61%;border-color:rgba(255,255,255,.13);}
+
+    .ayna-orb{
+      position:absolute;
+      top:50%;left:50%;
+      width:43%;height:43%;
+      display:flex;align-items:center;justify-content:center;
+      border-radius:50%;
+      background:radial-gradient(circle at 34% 28%,#F3C26A,#E8934F 55%,#D98A52 100%);
+      box-shadow:0 28px 65px rgba(36,22,45,.24);
+      color:#2A1F4E;
+      font-family:'Playfair Display',serif;
+      font-style:italic;
+      font-size:1.2rem;
+      animation:aynaOrbPulse 4s ease-in-out infinite;
+    }
+
+    .ayna-orbit{
+      position:absolute;inset:0;
+      animation:aynaOrbit 24s linear infinite;
+    }
+
+    .ayna-orbit-slot{
+      position:absolute;
+      top:50%;left:50%;
+      width:max-content;
+      transform:
+        translate(-50%,-50%)
+        rotate(var(--a))
+        translateY(calc(var(--r) * -1))
+        rotate(calc(var(--a) * -1));
+    }
+    .ayna-orbit-slot.s1{--a:0deg;}
+    .ayna-orbit-slot.s2{--a:120deg;}
+    .ayna-orbit-slot.s3{--a:240deg;}
+
+    .ayna-orbit-pill{
+      display:flex;align-items:center;gap:9px;
+      padding:.62rem 1rem;
+      border-radius:999px;
+      background:#FFFAF3;
+      color:#241A3D;
+      font-size:.8rem;
+      font-weight:500;
+      white-space:nowrap;
+      box-shadow:0 14px 34px rgba(24,16,40,.22);
+      animation:aynaCounterOrbit 24s linear infinite;
+    }
+    .ayna-orbit-pill i{
+      width:8px;height:8px;flex-shrink:0;
+      border-radius:50%;
+      background:#E8934F;
+    }
+
+    @keyframes aynaOrbit{to{transform:rotate(360deg)}}
+    @keyframes aynaCounterOrbit{to{transform:rotate(-360deg)}}
+    @keyframes aynaOrbPulse{
+      0%,100%{transform:translate(-50%,-50%) scale(1)}
+      50%{transform:translate(-50%,-50%) scale(1.03)}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      .ayna-orbit,.ayna-orbit-pill,.ayna-orb{animation:none!important;}
+    }
+
+    /* product picks — geometry matched to aynahealth.co quiz results */
+    .ayna-picks{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      width:100%;
+      margin-top:1.6rem;
+    }
+
+    .ayna-pick{
+      position:relative;
+      aspect-ratio:381 / 340;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      padding:22px;
+      background:#FAF1E2;
+      border-radius:22px;
+      box-shadow:0 10px 30px rgba(36,20,50,.14);
+      transition:transform .18s ease,box-shadow .18s ease;
+    }
+    .ayna-pick:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 44px rgba(36,20,50,.24);
+    }
+
+    .ayna-pick-link{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      border-radius:22px;
+    }
+    .ayna-pick-link:focus-visible{
+      outline:2px solid #F0A84B;
+      outline-offset:3px;
+    }
+
+    .ayna-pick-top{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      margin-bottom:15.2px;
+    }
+
+    .ayna-pick-icon{
+      width:32px;height:32px;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid rgba(26,23,20,.15);
+      border-radius:50%;
+      color:#4A423B;
+    }
+    .ayna-pick-icon svg{
+      width:15px;height:15px;
+      fill:none;stroke:currentColor;
+      stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
+    }
+
+    .ayna-pick-badge{
+      padding:5px 11px;
+      border-radius:999px;
+      background:#241A3D;
+      color:#F3C26A;
+      font-size:.69rem;
+      font-weight:700;
+    }
+
+    .ayna-pick-cat{
+      margin-bottom:4.8px;
+      color:#8D84A0;
+      font-size:11px;
+      line-height:1.6;
+      letter-spacing:.88px;
+      text-transform:uppercase;
+    }
+
+    .ayna-pick-name{
+      color:#241A3D;
+      font-family:'Playfair Display',serif;
+      font-size:19px;
+      font-weight:500;
+      line-height:1.2;
+      letter-spacing:-.19px;
+    }
+
+    .ayna-pick-tags{
+      display:flex;flex-wrap:wrap;gap:6px;
+      margin-bottom:13.6px;
+    }
+    .ayna-pick-tags span{
+      padding:5px 11px;
+      border-radius:999px;
+      background:#F2E6D2;
+      color:#6F6580;
+      font-size:11.5px;
+    }
+
+    .ayna-pick-price{
+      margin-top:auto;
+      padding-top:12px;
+      border-top:1px solid rgba(36,26,61,.14);
+      color:#241A3D;
+      font-size:15px;
+      font-weight:700;
+    }
+
+    .ayna-pick-why{
+      position:relative;
+      z-index:2;
+      display:flex;align-items:center;justify-content:center;gap:7px;
+      width:100%;
+      margin-top:12.8px;
+      padding:11px;
+      background:transparent;
+      border:1.33px solid #241A3D;
+      border-radius:999px;
+      color:#241A3D;
+      font-family:'DM Sans',sans-serif;
+      font-size:13.5px;
+      font-weight:700;
+      cursor:pointer;
+      transition:background .18s ease;
+    }
+    .ayna-pick-why:hover{background:rgba(36,26,61,.07);}
+    .ayna-pick-why svg{
+      width:14px;height:14px;
+      fill:none;stroke:currentColor;
+      stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+      transition:transform .2s ease;
+    }
+    .ayna-pick.is-open .ayna-pick-why svg{transform:rotate(180deg);}
+
+    .ayna-pick-why-panel{
+      display:none;
+      position:relative;
+      z-index:2;
+      padding:14px 16px;
+      background:#FFFAF3;
+      border-radius:10px;
+      color:#6F6580;
+      font-size:13px;
+      line-height:20.8px;
+    }
+    .ayna-pick.is-open .ayna-pick-why-panel{display:block;}
+    .ayna-pick-why-panel strong{color:#241A3D;font-weight:700;}
+    .ayna-pick-why-panel ul{margin:6px 0 0;padding:0 0 0 18px;}
+    .ayna-pick-why-panel li{margin:0;padding:0;}
+
+    .ayna-eco-note{
+      margin-top:.9rem;
+      color:rgba(244,240,250,.5);
+      font-size:.68rem;
+      line-height:1.5;
+    }
+
+    @media(max-width:820px){
+      .ayna-left{order:1;width:100%;}
+      .form-card,.success-screen{margin-top:0;}
+      .ayna-left .headline{margin-top:.55rem;}
+      .ayna-eco{order:6;margin-top:1.9rem;}
+      .ayna-orbit-stage{
+        width:min(240px,54vw);
+        height:min(240px,54vw);
+        --r:calc(min(240px,54vw) / 2);
+      }
+      .ayna-orbit-pill{font-size:.68rem;gap:7px;padding:.5rem .8rem;}
+      .ayna-picks{grid-template-columns:1fr;gap:14px;}
+      .ayna-pick{aspect-ratio:auto;}
+    }
+
+    @media(max-width:380px){
+      .ayna-orbit-stage{
+        width:min(184px,52vw);
+        height:min(184px,52vw);
+        --r:calc(min(184px,52vw) / 2);
+      }
+      .ayna-orbit-pill{font-size:.62rem;gap:6px;padding:.42rem .7rem;}
+    }
+
   </style>
 </head>
 <body>
@@ -568,13 +853,96 @@
 <div class="bg-overlay"></div>
 <div class="page">
   <div style="width:100%;display:flex;flex-direction:column;align-items:center;margin-bottom:0;">
-    <div class="wordmark" style="text-align:center;letter-spacing:0.45em;padding-left:0.45em;">Ayna</div>
-    <div class="sub-wordmark" style="text-align:center;">Your bathroom cabinet, upgraded.</div>
+    <div class="wordmark" style="text-align:center;letter-spacing:0.45em;padding-left:0.45em;">ayna</div>
   </div>
   <div id="form-view" style="width:100%;max-width:680px;display:flex;flex-direction:column;align-items:center;">
-    <h1 class="headline"><span class="headline-line">Women's health shopping,</span><span class="headline-line"><em>personalized.</em></span></h1>
-    <p class="subheadline">Tell us what you need. Ayna helps you find products and services that fit your health, goals and preferences.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:2rem;animation:fadeUp 0.7s 0.28s ease both;">
+    <div class="ayna-left">
+      <h1 class="headline"><span class="headline-line">Women's health shopping,</span><span class="headline-line"><em>mapped to your body.</em></span></h1>
+      <p class="subheadline">Tell us what you need. Ayna helps you find products and services that fit your health, goals and preferences.</p>
+
+      <div class="ayna-orbit-stage" aria-hidden="true">
+        <div class="ayna-orbit-ring r1"></div>
+        <div class="ayna-orbit-ring r2"></div>
+        <div class="ayna-orbit-ring r3"></div>
+        <div class="ayna-orbit">
+          <div class="ayna-orbit-slot s1"><div class="ayna-orbit-pill"><i></i>Your goals</div></div>
+          <div class="ayna-orbit-slot s2"><div class="ayna-orbit-pill"><i></i>Your health history</div></div>
+          <div class="ayna-orbit-slot s3"><div class="ayna-orbit-pill"><i></i>Your shopping behavior</div></div>
+        </div>
+        <div class="ayna-orb">you</div>
+      </div>
+    </div>
+
+      <div class="ayna-eco">
+
+        <div class="ayna-picks">
+          <div class="ayna-pick">
+            <a class="ayna-pick-link" href="https://www.aynahealth.co/product/the-lim-bundle" target="_blank" rel="noopener noreferrer" aria-label="The LiM Bundle on ayna"></a>
+            <div class="ayna-pick-top">
+              <span class="ayna-pick-icon"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+              <span class="ayna-pick-badge">Strong match</span>
+            </div>
+            <div class="ayna-pick-cat">Pelvic floor</div>
+            <div class="ayna-pick-name">The LiM Bundle</div>
+            <div class="ayna-pick-tags"><span>Your goals</span><span>Your needs</span></div>
+            <div class="ayna-pick-price">$199.95</div>
+            <button type="button" class="ayna-pick-why" aria-expanded="false">Why ayna picked this <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="ayna-pick-why-panel">
+              <strong>Matched using your profile:</strong>
+              <ul>
+                <li>Matches your goals</li>
+                <li>Uses the health profile and preferences you shared</li>
+                <li>Selected without sponsorship influencing the recommendation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ayna-pick">
+            <a class="ayna-pick-link" href="https://www.aynahealth.co/product/rejuvenate-vulva-balm" target="_blank" rel="noopener noreferrer" aria-label="BUNI REJUVENATE Vulva Balm on ayna"></a>
+            <div class="ayna-pick-top">
+              <span class="ayna-pick-icon"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+              <span class="ayna-pick-badge">Strong match</span>
+            </div>
+            <div class="ayna-pick-cat">Vulva care</div>
+            <div class="ayna-pick-name">BUNI REJUVENATE Vulva Balm</div>
+            <div class="ayna-pick-tags"><span>Your needs</span><span>Your preferences</span></div>
+            <div class="ayna-pick-price">$42</div>
+            <button type="button" class="ayna-pick-why" aria-expanded="false">Why ayna picked this <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="ayna-pick-why-panel">
+              <strong>Matched using your profile:</strong>
+              <ul>
+                <li>Matches your needs</li>
+                <li>Uses the health profile and preferences you shared</li>
+                <li>Selected without sponsorship influencing the recommendation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ayna-pick">
+            <a class="ayna-pick-link" href="https://www.aynahealth.co/product/nurx" target="_blank" rel="noopener noreferrer" aria-label="Nurx on ayna"></a>
+            <div class="ayna-pick-top">
+              <span class="ayna-pick-icon"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+              <span class="ayna-pick-badge">Strong match</span>
+            </div>
+            <div class="ayna-pick-cat">Telehealth</div>
+            <div class="ayna-pick-name">Nurx</div>
+            <div class="ayna-pick-tags"><span>Your goals</span><span>Your preferences</span></div>
+            <div class="ayna-pick-price">$15–20/month</div>
+            <button type="button" class="ayna-pick-why" aria-expanded="false">Why ayna picked this <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="ayna-pick-why-panel">
+              <strong>Matched using your profile:</strong>
+              <ul>
+                <li>Matches your goals</li>
+                <li>Uses the health profile and preferences you shared</li>
+                <li>Selected without sponsorship influencing the recommendation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p class="ayna-eco-note">Example picks shown for preview.</p>
+      </div>
+    <div class="ayna-tags" style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-bottom:2rem;animation:fadeUp 0.7s 0.28s ease both;">
       <span style="font-size:0.68rem;font-weight:400;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:0.35rem 0.9rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);white-space:nowrap;">Hormones &amp; cycles</span>
       <span style="font-size:0.68rem;font-weight:400;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:0.35rem 0.9rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);white-space:nowrap;">Fertility &amp; pregnancy</span>
       <span style="font-size:0.68rem;font-weight:400;letter-spacing:0.08em;border:1px solid rgba(255,255,255,0.35);border-radius:100px;padding:0.35rem 0.9rem;color:rgba(255,255,255,0.85);background:rgba(255,255,255,0.1);white-space:nowrap;">Pelvic &amp; reproductive health</span>
@@ -598,7 +966,7 @@
         <div class="field" id="field-concern">
           <label>What brings you here? <span style="font-size:0.6rem;opacity:0.7;text-transform:none;letter-spacing:0;">(select all that apply)</span></label>
           <div id="concern-dropdown" style="position:relative;z-index:50;">
-            <div id="concern-trigger" onclick="toggleConcernDropdown()" style="cursor:pointer;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.35);border-radius:9px;color:rgba(255,255,255,0.55);padding:0.72rem 0.9rem;padding-right:2.4rem;font-family:'Jost',sans-serif;font-size:0.9rem;font-weight:300;user-select:none;position:relative;">
+            <div id="concern-trigger" onclick="toggleConcernDropdown()" style="cursor:pointer;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.35);border-radius:9px;color:rgba(255,255,255,0.55);padding:0.72rem 0.9rem;padding-right:2.4rem;font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:300;user-select:none;position:relative;">
               <span id="concern-display">Select all that apply</span>
               <span style="position:absolute;right:0.9rem;top:50%;transform:translateY(-50%);font-size:0.6rem;opacity:0.6;">▼</span>
             </div>
@@ -644,7 +1012,7 @@
 <option value="Other">Other</option></select><span class="field-error">Please select one</span></div>
         <div class="field" id="field-source-other" style="display:none"><label>Please specify</label><input type="text" id="source-other" placeholder="Where did you hear about us?"/><span class="field-error">Please specify</span></div>
         <div class="btn-stack">
-          <button type="submit" class="btn" id="submit-btn"><span class="btn-text">Join the free waitlist</span><span class="spinner"></span></button>
+          <button type="submit" class="btn" id="submit-btn"><span class="btn-text">Exclusive Access to ayna Mobile</span><span class="spinner"></span></button>
         </div>
       </form>
     </div>
@@ -722,6 +1090,15 @@ function toggleOther(field) {
       trigger.style.color = '#fff';
     }
   }
+
+  document.addEventListener('click', function(e) {
+    const why = e.target.closest('.ayna-pick-why');
+    if (!why) return;
+    e.preventDefault();
+    const card = why.closest('.ayna-pick');
+    const open = card.classList.toggle('is-open');
+    why.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
 
   // Close dropdown when clicking outside
   document.addEventListener('click', function(e) {
@@ -809,6 +1186,5 @@ function validate(){clearErrors();let ok=true;if(!document.getElementById('first
     }
   });
 </script>
-<div style="position:relative;z-index:0;text-align:center;padding:1.5rem 0 1rem;font-family:'Jost',sans-serif;font-size:0.6rem;font-weight:300;color:rgba(255,255,255,0.45);letter-spacing:0.08em;pointer-events:none">photo: @hirayapilates</div>
 </body>
 </html>
