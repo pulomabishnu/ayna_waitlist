@@ -166,6 +166,16 @@ const server = http.createServer(async (req, res) => {
       return sendFile(res, 200, HERO_IMAGE_PATH, "image/png");
     }
 
+    if (req.method === "GET" && reqPath.startsWith("/assets/")) {
+      const ext = path.extname(reqPath).toLowerCase();
+      const contentType =
+        ext === ".png" ? "image/png" :
+        ext === ".jpg" || ext === ".jpeg" ? "image/jpeg" :
+        ext === ".svg" ? "image/svg+xml" :
+        "application/octet-stream";
+      return sendFile(res, 200, path.join(ROOT, reqPath), contentType);
+    }
+
     if (req.method === "POST" && reqPath === "/api/waitlist") {
       const payload = await parseJsonBody(req);
       const checked = validatePayload(payload);
