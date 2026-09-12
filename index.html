@@ -897,6 +897,34 @@
     .checkbox-row input[type=checkbox]:checked::after{content:'';position:absolute;left:5px;top:1px;width:5px;height:9px;border:solid #2a1808;border-width:0 2px 2px 0;transform:rotate(45deg);}
     .field.has-error .checkbox-row{color:#8a2d0e;}
 
+    @media(min-width:821px){
+      .ayna-left{
+        display:grid!important;
+        grid-template-columns:1fr auto!important;
+        align-items:center!important;
+        column-gap:1.75rem;
+        row-gap:0!important;
+      }
+      .ayna-left .headline{
+        grid-column:1;
+        grid-row:1;
+        margin-top:0!important;
+        margin-bottom:0!important;
+        font-size:clamp(2rem,3.4vw,2.9rem)!important;
+        line-height:1.08!important;
+      }
+      .app-badges{
+        grid-column:2;
+        grid-row:1;
+        margin-bottom:0!important;
+      }
+      .ayna-orbit-stage{
+        grid-column:1/-1!important;
+        grid-row:2;
+        margin:2rem auto .5rem!important;
+      }
+    }
+
   </style>
 </head>
 <body>
