@@ -28,8 +28,12 @@ function doPost(e) {
       data.last || "",
       data.email || "",
       data.phone || "",
+      data.device || "",
       data.concern || "",
+      data.lifeStage || "",
       data.source || "",
+      data.agreePrerelease ? "Yes" : "No",
+      data.agreeConsent ? "Yes" : "No",
       "RECEIVED",
       "PENDING",
       ""
@@ -59,8 +63,12 @@ function doPost(e) {
       "last name": data.last || "",
       "email": data.email || "",
       "phone": data.phone || "",
+      "device": data.device || "",
       "health concern": data.concern || "",
-      "how they heard": data.source || ""
+      "life stage": data.lifeStage || "",
+      "how they heard": data.source || "",
+      "pre-release ack": data.agreePrerelease ? "Yes" : "No",
+      "18+ consent": data.agreeConsent ? "Yes" : "No"
     };
 
     var row = [];
@@ -77,7 +85,7 @@ function doPost(e) {
 
     sheet.appendRow(row);
 
-    rawSheet.getRange(rawRow, 10).setValue("SAVED");
+    rawSheet.getRange(rawRow, 14).setValue("SAVED");
 
     var substackResult = addToSubstack(
       data.email,
@@ -86,12 +94,12 @@ function doPost(e) {
     );
 
     rawSheet
-      .getRange(rawRow, 11)
+      .getRange(rawRow, 15)
       .setValue(substackResult.success ? "SENT" : "FAILED");
 
     if (!substackResult.success) {
       rawSheet
-        .getRange(rawRow, 12)
+        .getRange(rawRow, 16)
         .setValue(substackResult.error || "Substack failed");
     }
 
@@ -106,11 +114,11 @@ function doPost(e) {
     if (rawSheet && rawRow) {
       try {
         rawSheet
-          .getRange(rawRow, 10)
+          .getRange(rawRow, 14)
           .setValue("WAITLIST WRITE FAILED");
 
         rawSheet
-          .getRange(rawRow, 12)
+          .getRange(rawRow, 16)
           .setValue(err.message);
       } catch (backupErr) {
         Logger.log(
@@ -143,8 +151,12 @@ function getOrCreateRawSheet(ss) {
       "last name",
       "email",
       "phone",
+      "device",
       "health concern",
+      "life stage",
       "how they heard",
+      "pre-release ack",
+      "18+ consent",
       "waitlist status",
       "substack status",
       "error"

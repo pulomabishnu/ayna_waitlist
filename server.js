@@ -45,15 +45,22 @@ function validatePayload(payload) {
   const last = normalizeString(payload.last);
   const email = normalizeString(payload.email).toLowerCase();
   const phone = normalizeString(payload.phone);
+  const device = normalizeString(payload.device);
   const source = normalizeString(payload.source);
   const concern = normalizeString(payload.concern);
+  const lifeStage = normalizeString(payload.lifeStage);
+  const agreePrerelease = payload.agreePrerelease === true;
+  const agreeConsent = payload.agreeConsent === true;
 
   if (!first) return { error: "First name is required" };
   if (!last) return { error: "Last name is required" };
   if (!email || !isValidEmail(email)) return { error: "Valid email is required" };
   if (!phone) return { error: "Phone number is required" };
+  if (!device) return { error: "Please select your device" };
   if (!concern) return { error: "Please select at least one concern" };
   if (!source) return { error: "Please tell us how you found us" };
+  if (!agreePrerelease) return { error: "You must acknowledge this is a pre-release build" };
+  if (!agreeConsent) return { error: "You must confirm you're 18+ and consent to the testing terms" };
 
   return {
     value: {
@@ -62,8 +69,12 @@ function validatePayload(payload) {
       last,
       email,
       phone,
+      device,
       concern,
-      source
+      lifeStage,
+      source,
+      agreePrerelease,
+      agreeConsent
     }
   };
 }
