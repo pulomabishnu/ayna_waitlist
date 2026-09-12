@@ -424,11 +424,21 @@
         gap:0;
       }
 
+      .ayna-left{
+        display:grid!important;
+        grid-template-columns:1fr auto;
+        align-items:center!important;
+        column-gap:.85rem;
+        row-gap:0;
+      }
+
       .headline{
-        margin:.85rem 0 .6rem;
+        grid-column:1;
+        grid-row:1;
+        margin:.85rem 0 0;
         max-width:100%;
-        font-size:clamp(2rem,9.4vw,2.75rem);
-        line-height:1.02;
+        font-size:clamp(1.5rem,7.2vw,2.1rem);
+        line-height:1.05;
       }
 
       .subheadline{
@@ -441,26 +451,37 @@
       .ayna-tags{display:none!important;}
 
       .app-badges{
-        align-self:center;
-        margin-bottom:.4rem;
+        grid-column:2;
+        grid-row:1;
+        flex-direction:column!important;
+        align-items:stretch!important;
+        gap:.4rem!important;
+        margin:.85rem 0 0!important;
       }
 
       .app-icon{
-        width:56px;
-        height:56px;
-        border-radius:14px;
+        width:48px!important;
+        height:48px!important;
+        border-radius:12px!important;
+        align-self:center;
+      }
+
+      .store-badges{
+        flex-direction:column;
+        gap:.35rem!important;
       }
 
       .store-badge{
-        padding:.4rem .7rem;
-        gap:6px;
+        padding:.32rem .55rem!important;
+        gap:5px!important;
+        justify-content:center;
       }
 
-      .store-badge svg{width:16px;height:16px;}
-      .store-badge .badge-text .badge-sub{font-size:.5rem;}
-      .store-badge .badge-text .badge-main{font-size:.78rem;}
+      .store-badge svg{width:14px;height:14px;}
+      .store-badge .badge-text .badge-sub{font-size:.44rem;}
+      .store-badge .badge-text .badge-main{font-size:.68rem;}
 
-      .ayna-orbit-stage{margin:0 auto .3rem;}
+      .ayna-orbit-stage{grid-column:1/-1;grid-row:2;margin:.5rem auto .3rem!important;}
 
       .form-card{
         order:3;
