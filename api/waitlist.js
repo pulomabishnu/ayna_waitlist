@@ -1,7 +1,7 @@
 const { randomUUID } = require("crypto");
 
 const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwtriZSCupCOC8pemVhY7ktCpSbIp3T9_eFNwR6wWbabzVvw9olqoYfMsfxlqxPrmvikQ/exec";
+  "https://script.google.com/macros/s/AKfycbwHJXzFXu-o5gwIwONZ1jMSm1KSBhF1e2aumxHxH7ZHMkOLPkq5O-gZzah24rNuUjx5WQ/exec";
 
 const WEBHOOK_TIMEOUT_MS = 20000;
 
