@@ -425,20 +425,26 @@
       }
 
       .ayna-left{
-        display:grid!important;
-        grid-template-columns:1fr 1fr;
-        align-items:center!important;
-        column-gap:.85rem;
-        row-gap:0;
+        display:flex!important;
+        flex-direction:column!important;
+        align-items:flex-start!important;
+      }
+
+      .hero-copy{
+        width:100%;
       }
 
       .headline{
-        grid-column:1;
-        grid-row:1;
         margin:.85rem 0 0!important;
         max-width:100%;
-        font-size:clamp(1.15rem,5.6vw,1.6rem)!important;
-        line-height:1.1!important;
+        font-size:clamp(2.15rem,9vw,2.9rem)!important;
+        line-height:1.05!important;
+      }
+
+      .hero-note{
+        font-size:.85rem!important;
+        margin-top:.5rem!important;
+        max-width:100%!important;
       }
 
       .subheadline{
@@ -451,37 +457,34 @@
       .ayna-tags{display:none!important;}
 
       .app-badges{
-        grid-column:2;
-        grid-row:1;
+        align-self:center!important;
         flex-direction:column!important;
-        align-items:stretch!important;
-        gap:.4rem!important;
-        margin:.85rem 0 0!important;
+        align-items:center!important;
+        gap:.5rem!important;
+        margin:1.25rem 0 0!important;
       }
 
       .app-icon{
-        width:48px!important;
-        height:48px!important;
-        border-radius:12px!important;
-        align-self:center;
+        width:52px!important;
+        height:52px!important;
+        border-radius:13px!important;
       }
 
       .store-badges{
-        flex-direction:column;
-        gap:.35rem!important;
+        flex-direction:row!important;
+        gap:.5rem!important;
       }
 
       .store-badge{
-        padding:.32rem .55rem!important;
+        padding:.35rem .6rem!important;
         gap:5px!important;
-        justify-content:center;
       }
 
       .store-badge svg{width:14px;height:14px;}
-      .store-badge .badge-text .badge-sub{font-size:.44rem;}
+      .store-badge .badge-text .badge-sub{font-size:.42rem;}
       .store-badge .badge-text .badge-main{font-size:.68rem;}
 
-      .ayna-orbit-stage{grid-column:1/-1;grid-row:2;margin:1.75rem auto 1.75rem!important;}
+      .ayna-orbit-stage{margin:1.75rem auto 1.75rem!important;}
 
       .form-card{
         order:3;
@@ -897,27 +900,41 @@
     .checkbox-row input[type=checkbox]:checked::after{content:'';position:absolute;left:5px;top:1px;width:5px;height:9px;border:solid #2a1808;border-width:0 2px 2px 0;transform:rotate(45deg);}
     .field.has-error .checkbox-row{color:#8a2d0e;}
 
+    .hero-copy{display:flex;flex-direction:column;}
+    .hero-note{font-size:.9rem;font-weight:300;color:rgba(244,240,250,0.82);line-height:1.5;max-width:440px;margin-top:.6rem;text-align:left;}
+    .hero-note a{color:#F0A84B;text-decoration:underline;text-underline-offset:2px;font-weight:500;}
+    .hero-note a:hover{color:#FFD79A;}
+
     @media(min-width:821px){
       .ayna-left{
         display:grid!important;
         grid-template-columns:1fr auto!important;
         align-items:center!important;
-        column-gap:1.75rem;
+        column-gap:1.5rem;
         row-gap:0!important;
       }
-      .ayna-left .headline{
+      .hero-copy{
         grid-column:1;
         grid-row:1;
-        margin-top:0!important;
-        margin-bottom:0!important;
-        font-size:clamp(2rem,3.4vw,2.9rem)!important;
-        line-height:1.08!important;
       }
       .app-badges{
         grid-column:2;
         grid-row:1;
+        align-self:center!important;
         margin-bottom:0!important;
       }
+      .app-icon{
+        width:56px!important;
+        height:56px!important;
+        border-radius:14px!important;
+      }
+      .store-badge{
+        padding:.4rem .65rem!important;
+        gap:6px!important;
+      }
+      .store-badge svg{width:16px;height:16px;}
+      .store-badge .badge-text .badge-sub{font-size:.5rem;}
+      .store-badge .badge-text .badge-main{font-size:.78rem;}
       .ayna-orbit-stage{
         grid-column:1/-1!important;
         grid-row:2;
@@ -942,7 +959,10 @@
   </div>
   <div id="form-view" style="width:100%;max-width:680px;display:flex;flex-direction:column;align-items:center;">
     <div class="ayna-left">
-      <h1 class="headline"><span class="headline-line">Be an early user</span><span class="headline-line"><em>for the ayna app.</em></span></h1>
+      <div class="hero-copy">
+        <h1 class="headline"><span class="headline-line">Be an early user</span><span class="headline-line"><em>for the ayna app.</em></span></h1>
+        <p class="hero-note">Make sure to visit our website <a href="https://www.aynahealth.co" target="_blank" rel="noopener noreferrer">aynahealth.co</a> and create an account before app launch!</p>
+      </div>
       <div class="app-badges">
         <div class="app-icon" aria-hidden="true">
           <img src="assets/app-icon.png" alt=""/>
