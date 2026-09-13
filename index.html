@@ -152,7 +152,7 @@
       grid-template-columns:minmax(0,1fr) minmax(420px,500px);
       column-gap:clamp(2.5rem,6vw,6rem);
       row-gap:1rem;
-      align-items:start!important;
+      align-items:center!important;
       margin:0 auto;
     }
 
@@ -424,16 +424,24 @@
         gap:0;
       }
 
+      .ayna-left{
+        display:grid!important;
+        grid-template-columns:1fr 1fr;
+        align-items:center!important;
+        column-gap:.85rem;
+        row-gap:0;
+      }
+
       .headline{
-        order:1;
-        margin:.85rem 0 .6rem;
+        grid-column:1;
+        grid-row:1;
+        margin:.85rem 0 0!important;
         max-width:100%;
-        font-size:clamp(2rem,9.4vw,2.75rem);
-        line-height:1.02;
+        font-size:clamp(1.15rem,5.6vw,1.6rem)!important;
+        line-height:1.1!important;
       }
 
       .subheadline{
-        order:2;
         max-width:100%;
         margin:0 0 .9rem;
         font-size:.91rem;
@@ -442,9 +450,42 @@
 
       .ayna-tags{display:none!important;}
 
+      .app-badges{
+        grid-column:2;
+        grid-row:1;
+        flex-direction:column!important;
+        align-items:stretch!important;
+        gap:.4rem!important;
+        margin:.85rem 0 0!important;
+      }
+
+      .app-icon{
+        width:48px!important;
+        height:48px!important;
+        border-radius:12px!important;
+        align-self:center;
+      }
+
+      .store-badges{
+        flex-direction:column;
+        gap:.35rem!important;
+      }
+
+      .store-badge{
+        padding:.32rem .55rem!important;
+        gap:5px!important;
+        justify-content:center;
+      }
+
+      .store-badge svg{width:14px;height:14px;}
+      .store-badge .badge-text .badge-sub{font-size:.44rem;}
+      .store-badge .badge-text .badge-main{font-size:.68rem;}
+
+      .ayna-orbit-stage{grid-column:1/-1;grid-row:2;margin:1.75rem auto 1.75rem!important;}
+
       .form-card{
         order:3;
-        margin:0;
+        margin:.75rem 0 0;
         padding:1rem;
         border-radius:18px;
       }
@@ -560,7 +601,7 @@
 
     .ayna-left{
       grid-column:1;
-      grid-row:1 / span 5;
+      grid-row:1;
       display:flex;
       flex-direction:column;
       align-items:flex-start;
@@ -586,7 +627,7 @@
       --r:160px;
       width:320px;
       height:320px;
-      margin:1.9rem auto .5rem;
+      margin:0 auto .5rem;
       flex:none;
     }
 
@@ -840,6 +881,50 @@
       .ayna-orbit-pill{font-size:.62rem;gap:6px;padding:.42rem .7rem;}
     }
 
+    .app-badges{display:flex;flex-direction:column;align-items:center;gap:1rem;margin-bottom:0.5rem;animation:fadeUp 0.7s 0.22s ease both;}
+    .app-icon{width:84px;height:84px;border-radius:20px;box-shadow:0 12px 30px rgba(15,10,30,.4);overflow:hidden;}
+    .app-icon img{width:100%;height:100%;object-fit:cover;display:block;}
+    .store-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:0.7rem;}
+    .store-badge{display:flex;align-items:center;gap:8px;background:#000;color:#fff;border-radius:9px;padding:0.5rem 0.9rem;text-decoration:none;border:1px solid rgba(255,255,255,0.25);transition:transform 0.15s,background 0.2s;}
+    .store-badge:hover{background:#1a1a1a;transform:scale(1.03);}
+    .store-badge svg{width:20px;height:20px;flex-shrink:0;}
+    .store-badge .badge-text{display:flex;flex-direction:column;line-height:1.15;}
+    .store-badge .badge-text .badge-sub{font-size:0.58rem;font-weight:300;letter-spacing:0.03em;opacity:0.9;}
+    .store-badge .badge-text .badge-main{font-size:0.92rem;font-weight:500;letter-spacing:0.01em;font-family:'DM Sans',sans-serif;}
+    .checkbox-row{display:flex;align-items:flex-start;gap:0.55rem;text-transform:none;letter-spacing:0.01em;font-size:0.82rem;font-weight:500;color:#2a1808;text-shadow:0 1px 2px rgba(255,255,255,0.25);cursor:pointer;line-height:1.4;}
+    .checkbox-row input[type=checkbox]{appearance:none;-webkit-appearance:none;flex-shrink:0;width:18px;height:18px;margin-top:0.1rem;border-radius:5px;border:1px solid rgba(42,24,8,0.55);background:rgba(255,255,255,0.55);cursor:pointer;position:relative;}
+    .checkbox-row input[type=checkbox]:checked{background:#F0A84B;border-color:#F0A84B;}
+    .checkbox-row input[type=checkbox]:checked::after{content:'';position:absolute;left:5px;top:1px;width:5px;height:9px;border:solid #2a1808;border-width:0 2px 2px 0;transform:rotate(45deg);}
+    .field.has-error .checkbox-row{color:#8a2d0e;}
+
+    @media(min-width:821px){
+      .ayna-left{
+        display:grid!important;
+        grid-template-columns:1fr auto!important;
+        align-items:center!important;
+        column-gap:1.75rem;
+        row-gap:0!important;
+      }
+      .ayna-left .headline{
+        grid-column:1;
+        grid-row:1;
+        margin-top:0!important;
+        margin-bottom:0!important;
+        font-size:clamp(2rem,3.4vw,2.9rem)!important;
+        line-height:1.08!important;
+      }
+      .app-badges{
+        grid-column:2;
+        grid-row:1;
+        margin-bottom:0!important;
+      }
+      .ayna-orbit-stage{
+        grid-column:1/-1!important;
+        grid-row:2;
+        margin:2rem auto .5rem!important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -857,8 +942,22 @@
   </div>
   <div id="form-view" style="width:100%;max-width:680px;display:flex;flex-direction:column;align-items:center;">
     <div class="ayna-left">
-      <h1 class="headline"><span class="headline-line">Women's health shopping,</span><span class="headline-line"><em>mapped to your body.</em></span></h1>
-      <p class="subheadline">Tell us what you need. Ayna helps you find products and services that fit your health, goals and preferences.</p>
+      <h1 class="headline"><span class="headline-line">Be an early user</span><span class="headline-line"><em>for the ayna app.</em></span></h1>
+      <div class="app-badges">
+        <div class="app-icon" aria-hidden="true">
+          <img src="assets/app-icon.png" alt=""/>
+        </div>
+        <div class="store-badges">
+          <a class="store-badge" href="#" aria-label="Download on the App Store">
+            <svg viewBox="0 0 384 512" fill="#fff"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141 4 184.8 4 273.9c0 26.5 4.9 53.9 14.6 82.2 13 37.9 59.6 130.9 108.2 129.4 25.5-.6 43.5-18.2 76.7-18.2 32.3 0 48.9 18.2 77.4 18.2 49-.7 91.1-85.5 103.5-123.5-65.9-31.1-65.7-91.3-65.7-93.3zm-56.6-172c27.9-33.3 25.4-63.6 24.6-74.5-24.7 1.4-53.3 16.9-69.5 36-17.9 20.5-28.4 45.8-26.2 74.2 26.9 2.1 51.4-11.4 71.1-35.7z"/></svg>
+            <span class="badge-text"><span class="badge-sub">Download on the</span><span class="badge-main">App Store</span></span>
+          </a>
+          <a class="store-badge" href="#" aria-label="Get it on Google Play">
+            <svg viewBox="0 0 512 512"><path fill="#00d9ff" d="M99.6 8.6C93.8 14.7 90.5 24.2 90.5 36.5v439c0 12.3 3.3 21.8 9.1 27.9l2.9 2.7L339.7 269 339.7 265 102.5 5.9z"/><path fill="#00f076" d="M419.2 349.8L339.7 269v-4.1l79.5-80.8 1.8 1L513.5 236c27.1 15.4 27.1 40.6 0 56L421 342.8z"/><path fill="#ff3a44" d="M419.2 349.8L339.7 269 99.6 508.4c9.1 9.6 24.1 10.8 41 1.2z"/><path fill="#ffcf00" d="M419.2 178.2L138.6 22c-16.9-9.6-31.9-8.4-41 1.2l243.1 240z"/></svg>
+            <span class="badge-text"><span class="badge-sub">GET IT ON</span><span class="badge-main">Google Play</span></span>
+          </a>
+        </div>
+      </div>
 
       <div class="ayna-orbit-stage" aria-hidden="true">
         <div class="ayna-orbit-ring r1"></div>
@@ -961,8 +1060,9 @@
           <div class="field" id="field-first"><label>First name</label><input type="text" id="first" placeholder="Maya" autocomplete="given-name"/><span class="field-error">Required</span></div>
           <div class="field" id="field-last"><label>Last name</label><input type="text" id="last" placeholder="Chen" autocomplete="family-name"/><span class="field-error">Required</span></div>
         </div>
-        <div class="field" id="field-email"><label>Email address</label><input type="email" id="email" placeholder="you@example.com" autocomplete="email"/><span class="field-error">Please enter a valid email</span></div>
+        <div class="field" id="field-email"><label>Email address <span style="font-size:0.6rem;opacity:0.7;text-transform:none;letter-spacing:0;">(the email you use for Apple or Google login)</span></label><input type="email" id="email" placeholder="you@example.com" autocomplete="email"/><span class="field-error">Please enter a valid email</span></div>
         <div class="field" id="field-phone"><label>Phone number</label><input type="tel" id="phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/><span class="field-error">Required</span></div>
+        <div class="field" id="field-device"><label>Device</label><select id="device"><option value="" disabled selected>Select one</option><option>iPhone</option><option>Android</option><option>Both</option></select><span class="field-error">Please select one</span></div>
         <div class="field" id="field-concern">
           <label>What brings you here? <span style="font-size:0.6rem;opacity:0.7;text-transform:none;letter-spacing:0;">(select all that apply)</span></label>
           <div id="concern-dropdown" style="position:relative;z-index:50;">
@@ -1009,8 +1109,11 @@
         <div class="field" id="field-concern-other" style="display:none"><label>Please specify</label><input type="text" id="concern-other" placeholder="Tell us more..."/><span class="field-error">Please specify</span></div>
         <div class="field" id="field-source"><label>How did you find us?</label><select id="source" onchange="toggleOther('source')"><option value="" disabled selected>Select one</option><option>TikTok</option><option>Instagram</option><option>LinkedIn</option><option>Reddit</option><option>A friend or colleague</option><option>Twitter / X</option><option>Google / search</option><option>Referred by an Ayna user</option>
 <option>Spoke to Eliz, Puloma, or Ameera</option>
+<option>MIT AI-Powered Women Conference</option>
 <option value="Other">Other</option></select><span class="field-error">Please select one</span></div>
         <div class="field" id="field-source-other" style="display:none"><label>Please specify</label><input type="text" id="source-other" placeholder="Where did you hear about us?"/><span class="field-error">Please specify</span></div>
+        <div class="field" id="field-agree-prerelease"><label class="checkbox-row"><input type="checkbox" id="agree-prerelease"/> I understand this is a pre-release build and may include bugs or incomplete features</label><span class="field-error">Required to continue</span></div>
+        <div class="field" id="field-agree-consent"><label class="checkbox-row"><input type="checkbox" id="agree-consent"/> I'm 18 or older and consent to my testing feedback being used to improve Ayna</label><span class="field-error">Required to continue</span></div>
         <div class="btn-stack">
           <button type="submit" class="btn" id="submit-btn"><span class="btn-text">Exclusive Access to ayna Mobile</span><span class="spinner"></span></button>
         </div>
@@ -1110,9 +1213,11 @@ function toggleOther(field) {
 
   function setError(id,show){const el=document.getElementById('field-'+id);if(el)el.classList.toggle('has-error',show)}
 function clearErrors(){document.querySelectorAll('.field').forEach(f=>f.classList.remove('has-error'));document.getElementById('concern-error').style.display='none';}
-function validate(){clearErrors();let ok=true;if(!document.getElementById('first').value.trim()){setError('first',true);ok=false}if(!document.getElementById('last').value.trim()){setError('last',true);ok=false}const email=document.getElementById('email').value.trim();if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){setError('email',true);ok=false}const phone=document.getElementById('phone').value.trim();if(!phone){setError('phone',true);ok=false}const checkedConcerns=[...document.querySelectorAll('#concern-options input[type=checkbox]:checked')];if(checkedConcerns.length===0){document.getElementById('concern-error').style.display='block';document.getElementById('field-concern').classList.add('has-error');ok=false;}else{document.getElementById('concern-error').style.display='none';document.getElementById('field-concern').classList.remove('has-error');}if(!document.getElementById('source').value){setError('source',true);ok=false}
+function validate(){clearErrors();let ok=true;if(!document.getElementById('first').value.trim()){setError('first',true);ok=false}if(!document.getElementById('last').value.trim()){setError('last',true);ok=false}const email=document.getElementById('email').value.trim();if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){setError('email',true);ok=false}const phone=document.getElementById('phone').value.trim();if(!phone){setError('phone',true);ok=false}if(!document.getElementById('device').value){setError('device',true);ok=false}const checkedConcerns=[...document.querySelectorAll('#concern-options input[type=checkbox]:checked')];if(checkedConcerns.length===0){document.getElementById('concern-error').style.display='block';document.getElementById('field-concern').classList.add('has-error');ok=false;}else{document.getElementById('concern-error').style.display='none';document.getElementById('field-concern').classList.remove('has-error');}if(!document.getElementById('source').value){setError('source',true);ok=false}
     if([...document.querySelectorAll('#concern-options input[type=checkbox]:checked')].some(c=>c.value==='Something else')&&!document.getElementById('concern-other').value.trim()){setError('concern-other',true);ok=false}
     if(document.getElementById('source').value==='Other'&&!document.getElementById('source-other').value.trim()){setError('source-other',true);ok=false}
+    if(!document.getElementById('agree-prerelease').checked){setError('agree-prerelease',true);ok=false}
+    if(!document.getElementById('agree-consent').checked){setError('agree-consent',true);ok=false}
     return ok}
 
   function setFormBusy(isBusy,kind){
@@ -1144,8 +1249,11 @@ function validate(){clearErrors();let ok=true;if(!document.getElementById('first
       last:document.getElementById('last').value.trim(),
       email:document.getElementById('email').value.trim(),
       phone:document.getElementById('phone').value.trim(),
+      device:document.getElementById('device').value,
       concern:concerns.join(' | '),
-      source
+      source,
+      agreePrerelease:document.getElementById('agree-prerelease').checked,
+      agreeConsent:document.getElementById('agree-consent').checked
     };
   }
 

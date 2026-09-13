@@ -4,38 +4,18 @@ Waitlist landing page + Node API that writes signups to Google Sheets (via Googl
 
 ## 1) Create your Google Sheet
 
-Create a sheet with this header row:
+Create a "Waitlist" sheet with a header row using (a subset of) these column names, in any order:
 
-`submittedAt | firstName | lastName | email | concerns | concernOther | source | sourceOther`
+`timestamp | first name | last name | email | phone | device | health concern | how they heard | pre-release ack | 18+ consent`
+
+The actual Apps Script (`apps-script.js`) also maintains a "Raw Submissions" sheet as a full audit log of every request, including delivery status.
 
 ## 2) Add Google Apps Script webhook
 
 In your sheet:
 
 1. Go to **Extensions -> Apps Script**
-2. Replace code with:
-
-```javascript
-function doPost(e) {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheets()[0];
-  var data = JSON.parse(e.postData.contents);
-
-  sheet.appendRow([
-    data.submittedAt || "",
-    data.firstName || "",
-    data.lastName || "",
-    data.email || "",
-    (data.concerns || []).join(", "),
-    data.concernOther || "",
-    data.source || "",
-    data.sourceOther || ""
-  ]);
-
-  return ContentService
-    .createTextOutput(JSON.stringify({ success: true }))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-```
+2. Paste in the contents of `apps-script.js` from this repo
 
 3. Click **Deploy -> New deployment**
 4. Type: **Web app**
